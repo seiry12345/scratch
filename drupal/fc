@@ -1,0 +1,27 @@
+<div id="node-<?php print $node->nid; ?>"
+         class="<?php print $classes; ?> clearfix <?= $view_mode; ?> views-n"<?php print $attributes; ?>>
+        <div class="node-news-content">
+            <?php
+            $ids = array();
+            foreach ($node->field_halls_preview['und'] as $key) {
+                $ids[] = $key['value'];
+            }
+            ?>
+
+            <?php
+            foreach ($ids as $item) {
+                $fc[] = field_collection_item_load($item);
+            }
+            ?>
+            <?php dpm($fc); ?>
+            <?php foreach ($fc as $item):
+                $fid = file_load($item->field_halls_preview_img['und'][0]['fid']);
+                $image_uri = image_style_url('470x350_preview', $fid->uri);
+                if(false) {$img_uri = file_create_url($node->field_image['und'][0]['uri']);}
+                ?>
+                <h2><a href="<?= $node_url; ?>"><?= $title; ?></a></h2>
+                <div class="text-field"><?= $item->field_halls_preview_text['und'][0]['safe_value'] ?></div>
+                <div class="img-field"><img src="<?= $image_uri ?>" alt="#"></div>
+            <?php endforeach; ?>
+        </div>
+    </div>

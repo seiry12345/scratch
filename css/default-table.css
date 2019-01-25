@@ -1,0 +1,34 @@
+.table-container
+  table
+  
+  
+css
+.table-container {
+  overflow-x: auto;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  border-spacing: 0;
+  font-size: 14px;
+    text-align: center;
+    font-size: 16px;
+    background-color: rgba(0, 154, 255, 0.8);
+    td:nth-child(2n){
+        text-align: center;
+        border-color: #fff;
+        color: initial;
+    }
+    tr, td:first-child {
+        padding: 10px 5px;
+    }
+    tr, td {
+        color: #fff !important;
+        border-style: solid;
+        border-width: 0 1px 1px 0;
+    }
+    p {
+        margin: 0;
+    }
+}

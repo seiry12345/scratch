@@ -1,0 +1,40 @@
+pse for 4^^
+font-family: FontAwesome;
+
+
+
+
+
+
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css" integrity="sha384-5sAR7xN1Nv6T6+dT2mhtzEpVJvfS3NScPQTrOxhwjIuvcA67KV2R5Jz6kr4abQsz" crossorigin="anonymous">
+
+<script defer src="https://use.fontawesome.com/releases/v5.0.9/js/all.js"
+            integrity="sha384-8iPTk2s/jMVj81dnzb/iFR2sdA7u06vHJyyLlAd4snFpCl/SnyUjRrbdJsw1pGIl"
+            crossorigin="anonymous"></script>
+    <script>
+        FontAwesomeConfig = {searchPseudoElements: true};
+    </script>
+    window.FontAwesomeConfig.searchPseudoElements = true; добавить в Jssssssssssssss
+
+
+&::after {
+          content: "\f30b";
+          position: absolute;
+          display: none;
+          width: 50px;
+          height: 20px;
+          font-family: "Font Awesome 5 Free";
+          font-weight: 900;
+        }
+
+&::before {
+          content: '';
+          position: absolute;
+          bottom: 18px;
+          width: 70%;
+          height: 1px;
+          background-color: #fff;
+          opacity: 0;
+          left: -100%;
+          transition: all .25s ease;
+        }

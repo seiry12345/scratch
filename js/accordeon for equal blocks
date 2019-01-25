@@ -1,0 +1,126 @@
+ <div class="page-main__content flex-start">     
+        <div class="catalog__item">
+            <div class="catalog__item-img">
+                <img src="/catalog/view/theme/atoll/image/tymba.jpg" alt="1">
+            </div>
+            <h2>Категория</h2>
+            <ul>           
+                <li><a href="#">Подкатегория</a></li>          
+                <li><a href="#">Подкатегория</a></li>
+                <li><a href="#">Подкатегория Подкатегория Подкатегория Подкатегория Подкатегория Подкатегория</a></li>
+                <li><a href="#">Подкатегория Подкатегория Подкатегория Подкатегория Подкатегория Подкатегория</a></li>
+                <li class="accordeon-li"><a href="#">Скрытая подкатегория</a></li>
+                <li class="accordeon-li"><a href="#">Скрытая подкатегория</a></li>
+                <li class="accordeon-li"><a href="#">Скрытая подкатегория</a></li>
+                <li class="accordeon-li"><a href="#">Скрытая подкатегория</a></li>
+                <li class="accordeon-li"><a href="#">Скрытая подкатегория</a></li>
+                <li class="accordeon-li"><a href="#">Скрытая подкатегория</a></li>
+                <li class="accordeon-li"><a href="#">Скрытая подкатегория</a></li>
+                <li class="accordeon-li"><a href="#">Скрытая подкатегория</a></li>
+                <li class="accordeon-li"><a href="#">Скрытая подкатегория</a></li>
+                <button type="button" class="button catalog__button">показать еще</button>
+            </ul>
+        </div>
+ </div>
+ 
+ 
+ //less
+ .flex-start {
+    align-items: flex-start;
+}
+.catalog__item {
+    position: relative;
+    width: 23.7%;
+    padding: 35px 30px 60px 30px;
+    margin-right: 20px;
+    margin-bottom: 20px;
+    background-color: #fff;
+    color: #000;
+    border-radius: 5px;
+}
+
+.auto-height {
+    height: auto;
+    ul {
+        height: auto !important;
+    }
+}
+
+.catalog__button {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 40px;
+    padding: 0;
+}
+
+.catalog__item:nth-child(4n) {
+    margin-right: 0;    
+}
+
+.catalog__item-img {
+    text-align: center;
+    margin-bottom: 20px;
+    img {
+        height: 98px;
+    }
+}
+
+.catalog__item  {
+    li {
+        margin-bottom: 10px;
+    }
+}
+
+.accordeon-li {
+    display: none;
+}
+
+.accordeon-li-show {
+    display: block;
+}
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ //js
+ $('.catalog__button').click(function () {
+//        $('.catalog__item').removeClass('auto-height');
+//        $('.accordeon-li').removeClass('accordeon-li-show');
+        $(this).siblings('.accordeon-li').toggleClass('accordeon-li-show');
+        $(this).parents('.catalog__item').toggleClass('auto-height');
+        var text = $(this).text();
+        $(this).text(
+                text == "показать еще" ? "скрыть" : "показать еще"
+                );
+        if (this('catalog__item').hasClass('auto-height')) {
+            $('.catalog__item').removeClass('auto-height');
+            $('.accordeon-li').removeClass('accordeon-li-show');
+        }
+    });
+
+    var catalogInnerInRow = 4;
+    if ($(window).width() > 980) {
+        catalogInnerInRow = 4;
+    } else if ($(window).width() > 767) {
+        catalogInnerInRow = 3;
+    } else {
+        catalogInnerInRow = 2;
+    }
+
+    var items = $('.catalog__item ul');
+    for (var i = 0; i < items.length; i = i + catalogInnerInRow) {
+        var row = items.slice(i, i + catalogInnerInRow);
+        var max = 0;
+        $(row).each(function () {
+            if ($(this).height() > max) {
+                max = $(this).height();
+            }
+        });
+        $(row).height(max);
+    }

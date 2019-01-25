@@ -1,0 +1,178 @@
+// Текстовое описание  в каталоге bitrix/catalog.section -> template.php -> .bx-section-desc
+
+
+
+
+//main_catalog -> catalog.section.list
+/* line */
+.bx_catalog_line {
+  margin-bottom: 30px;
+  .bx_catalog_line_category_title {
+    padding-bottom: 14px;
+    border-bottom: 1px solid #e5e5e5;
+    font-size: 24px;
+  }
+  .bx_catalog_line_ul {
+    padding: 0;
+    li {
+      margin-bottom: 20px;
+      &:before {
+        content: '' !important;
+      }
+    }
+  }
+  .bx_catalog_line_img {
+    position: relative;
+    display: block;
+    float: left;
+    overflow: hidden;
+    margin-right: 40px;
+    width: 125px;
+    height: 125px;
+    border: 1px solid #ccc;
+    border-radius: 2px;
+    background-position: center;
+    background-size: contain;
+    background-repeat: no-repeat;
+  }
+  .bx_catalog_line_title {
+    margin-bottom: 10px;
+    padding: 0;
+    vertical-align: top;
+    line-height: 18px;
+    a {
+      color: #4c7da6;
+      font-size: 18px;
+    }
+    span {
+      font-size: 16px;
+    }
+  }
+  .bx_catalog_line_description {
+    color: #3f3f3f;
+    font-size: 13px;
+    line-height: 16px;
+  }
+}
+
+/* text */
+.bx_catalog_text {
+  margin-bottom: 30px;
+  .bx_catalog_text_category_title {
+    padding-bottom: 14px;
+    border-bottom: 1px solid #e5e5e5;
+    font-size: 24px;
+  }
+  .bx_catalog_text_ul {
+    padding: 0;
+    li {
+      float: left;
+      margin: 0 10px 10px;
+      list-style: none;
+      &:before {
+        content: '' !important;
+      }
+    }
+  }
+  .bx_catalog_text_title {
+    margin: 0;
+    padding: 0;
+    vertical-align: top;
+    font-size: 14px;
+    line-height: 14px;
+    span {
+      font-size: 12px;
+    }
+  }
+}
+
+/* tile */
+.bx_catalog_tile {
+  margin-bottom: 30px;
+  .bx_catalog_tile_category_title {
+    padding-bottom: 14px;
+    border-bottom: 1px solid #e5e5e5;
+    font-size: 24px;
+  }
+  .bx_catalog_tile_ul {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    li {
+      width: 33.3333%;
+      margin-bottom: 20px;
+      padding: 0 10px;
+      list-style: none;
+      text-align: center;
+    }
+  }
+  .bx_catalog_tile_img {
+    position: relative;
+    display: block;
+    overflow: hidden;
+    width: 100%;
+    height: 300px;
+    margin: 0 auto;
+    background-color: #fff;
+    background-position: center;
+    background-size: contain;
+    background-repeat: no-repeat;
+  }
+  .bx_catalog_tile_title {
+    margin-top: 5px;
+    margin-bottom: 10px;
+    padding: 0;
+    vertical-align: top;
+    line-height: 14px;
+    a {
+      display: inline-block;
+      overflow: hidden;
+      max-width: 100%;
+      color: #4c7da6;
+      -ms-text-overflow: ellipsis;
+      text-overflow: ellipsis;
+      font-size: 14px;
+      span {
+        font-size: 12px;
+      }
+    }
+  }
+}
+/* list */
+
+.bx_sitemap {
+  margin-bottom: 30px;
+  .bx_sitemap_title {
+    padding-bottom: 14px;
+    border-bottom: 1px solid #e5e5e5;
+    font-size: 24px;
+  }
+  .bx_sitemap_ul {
+    li {
+      padding: 0;
+      line-height: 14px;
+      &:before {
+        content: '' !important
+      }
+    }
+  }
+  .bx_sitemap_li_title {
+    display: inline-block;
+    margin: 0;
+    margin-bottom: 10px;
+    padding: 0;
+    vertical-align: top;
+    font-weight: normal;
+    line-height: 13px;
+  }
+  .bx_sitemap_li_title {
+    a {
+      color: #4c7da6;
+      white-space: nowrap;
+      font-size: 13px;
+    }
+    span {
+      font-size: 11px;
+    }
+  }
+}

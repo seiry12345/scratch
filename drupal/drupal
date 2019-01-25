@@ -1,0 +1,133 @@
+get field content by id
+<table>
+<?php foreach ($content['field_product_table'][0]['entity']['field_collection_item'][169]['field_product_table_row']['#object']->field_product_table_row['und'] as $item_id): ?>
+    <?php
+           $table = field_collection_item_load($item_id);
+          $tableArr = $table->field_product_table_row_column['und'];
+              ?>
+             <tr>
+               <?php foreach ($tableArr as $item): ?>
+                     <td><?= $item['value']; ?></td>
+                            <?php endforeach; ?>
+                        </tr>
+                    <?php endforeach; ?>
+                </table>
+                
+                
+                
+                <div id="node-<?php print $node->nid; ?>" class="<?php print $classes; ?> clearfix"<?php print $attributes; ?>>
+        <?php if (!$page): ?>
+            <h3><?php print $title_attributes; ?><a href="<?php print $node_url; ?>"><?php print $title; ?></a></h3>
+        <?php endif; ?>
+        <div class="left-col">
+            <div class="main-img"><?php print render($content['field_main_img']); ?></div>
+            <div class="main-img"><?php print render($content['field_drawing']); ?></div>
+        </div>
+        <div class="right-col">
+            <div class="table">
+                <?php
+                foreach ($node->field_product_table['und'] as $und):
+                    $fcid = $und['value'];
+                    $fc = field_collection_item_load($fcid);
+                    ?>
+                    <table>
+                        <?php
+                        foreach ($fc->field_product_table_row['und'] as $fcItem) {
+                            $row = field_collection_item_load($fcItem['value']);
+                            ?>
+                            <tr>
+                            <?php
+                            foreach ($row->field_product_table_row_column['und'] as $td) {
+                                ?>
+                                    <td><?= $td['safe_value'] ?></td>
+                                    <?php
+                                }
+                                ?>
+                            </tr>
+                                <?php
+                            }
+                            ?>
+                    </table>
+                        <?php
+                    endforeach;
+                    ?>
+                <?php print render($content['body']['#items'][0]['value']); ?>
+            </div>
+        </div>
+    </div>
+    
+    
+    
+    function customFun_preprocess_html(&$vars) {
+  $request_path_array = explode('/', request_path());
+  if ($request_path_array) {
+    if ($request_path_array[0] == $GLOBALS['language']->language) {
+      unset($request_path_array[0]);
+    }
+    $class = 'path';
+    foreach ($request_path_array as $arg) {
+      $class .= '-' . $arg;
+      $class = str_replace('.html', '', $class);
+      $vars['classes_array'][] = $class;
+      
+    }
+  }  
+}
+
+function customFun_html_head_alter(&$head_elements) {
+  unset($head_elements['system_meta_generator']);
+}
+
+//размер файла 
+function formatSizeUnits($bytes) {
+        if ($bytes >= 1073741824)
+        {
+            $bytes = number_format($bytes / 1073741824, 1) . ' GB';
+        }
+        elseif ($bytes >= 1048576)
+        {
+            $bytes = number_format($bytes / 1048576, 1) . ' MB';
+        }
+        elseif ($bytes >= 1024)
+        {
+            $bytes = number_format($bytes / 1024, 1) . ' KB';
+        }
+        elseif ($bytes > 1)
+        {
+            $bytes = $bytes . ' bytes';
+        }
+        elseif ($bytes == 1)
+        {
+            $bytes = $bytes . ' byte';
+        }
+        else
+        {
+            $bytes = '0 bytes';
+        }
+        return $bytes;
+
+}
+
+function customFun($a, $b) {
+  if (empty($a->field_product_weight['und'][0]['value'])) {
+     $a->field_product_weight['und'][0]['value'] = 100;
+  }
+   if (empty($b->field_product_weight['und'][0]['value'])) {
+    $b->field_product_weight['und'][0]['value'] = 100;
+  }
+
+
+   if ($a->field_product_weight['und'][0]['value'] == $b->field_product_weight['und'][0]['value']) {
+       return 0;
+   }
+   return ($a->field_product_weight['und'][0]['value'] < $b->field_product_weight['und'][0]['value']) ? -1 : 1;
+}
+
+=>>>>>>>>>>>>            usort($array, 'function_name');
+    
+    
+    
+    
+    
+    
+   

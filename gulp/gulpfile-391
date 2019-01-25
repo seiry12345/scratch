@@ -1,0 +1,85 @@
+var gulp          = require('gulp'),
+		gutil         = require('gulp-util' ),
+		less          = require('gulp-less'),
+//		browsersync   = require('browser-sync'),
+		concat        = require('gulp-concat'),
+		uglify        = require('gulp-uglify'),
+		cleancss      = require('gulp-clean-css'),
+		rename        = require('gulp-rename'),
+		autoprefixer  = require('gulp-autoprefixer'),
+		notify        = require("gulp-notify");
+//
+//gulp.task('browser-sync', function() {
+//	browsersync({
+//		server: {
+//			baseDir: 'public_html'
+//		},
+//		notify: false,
+//		// open: false,
+//		// tunnel: true,
+//		// tunnel: "projectname", //Demonstration page: http://projectname.localtunnel.me
+//	})
+//});
+
+gulp.task('styles', function() {
+	return gulp.src('catalog/view/theme/atoll/less/**/*.less')
+	.pipe(less({ outputStyle: 'expand' }).on("error", notify.onError()))
+	.pipe(rename({ suffix: '.min', prefix : '' }))
+	.pipe(autoprefixer(['last 15 versions']))
+	.pipe(cleancss( {level: { 1: { specialComments: 0 } } })) // Opt., comment out when debugging
+	.pipe(gulp.dest('catalog/view/theme/atoll/css'))
+//	.pipe(browsersync.reload( {stream: true} ))
+});
+
+//gulp.task('js', function() {
+//	return gulp.src([
+//		'public_html/js/jquery.min.js',
+//		'public_html/js/slick.min.js',
+//		'public_html/js/jquery.mCustomScrollbar.concat.min.js',
+//                
+//		'public_html/js/scripts.js' // Always at the end
+//		])
+//	.pipe(concat('scripts.min.js'))
+//	// .pipe(uglify()) // Mifify js (opt.)
+//	.pipe(gulp.dest('public_html/js'))
+//	.pipe(browsersync.reload({ stream: true }))
+//});
+// var imagemin = require('gulp-imagemin'); 
+// var imageminJpegRecompress = require('imagemin-jpeg-recompress');
+// var pngquant = require('imagemin-pngquant');
+// var cache = require('gulp-cache');
+
+// // Images optimization and copy in /dist
+// gulp.task('images', function() {
+//   return gulp.src(projectPath.app.img)
+//     .pipe(cache(imagemin([
+//       imagemin.gifsicle({interlaced: true}),
+//       imagemin.jpegtran({progressive: true}),
+//       imageminJpegRecompress({
+//         loops: 5,
+//         min: 65,
+//         max: 70,
+//         quality:'medium'
+//       }),
+//       imagemin.svgo(),
+//       imagemin.optipng({optimizationLevel: 3}),
+//       pngquant({quality: '65-70', speed: 5})
+//     ],{
+//       verbose: true
+//     })))
+//     .pipe(gulp.dest(projectPath.dist.img));
+// });
+
+// // Clearing the cache
+// gulp.task('clear', function (done) {
+//   return cache.clearAll(done);
+// });
+
+
+gulp.task('watch', ['styles'], function() {
+	gulp.watch('catalog/view/theme/atoll/less/**/*.less', ['styles']);
+//	gulp.watch(['public_html/**/*.js', 'public_html/js/scripts.min.js'], ['js']);
+//	gulp.watch('public_html/*.html', browsersync.reload)
+});
+
+gulp.task('default', ['watch']);

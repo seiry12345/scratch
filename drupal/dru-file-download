@@ -1,0 +1,33 @@
+<?php if ($view_mode == 'teaser'): ?>
+<div id="node-<?php print $node->nid; ?>" class="<?php print $classes; ?> clearfix <?= $view_mode; ?> views-n" <?php
+  print $attributes; ?>>
+  <h2><a href="<?= $node_url; ?>">
+      <?= $title; ?></a></h2>
+  <table>
+    <?php
+	$docsArr = $node->field_docs_file['und'];
+	foreach ($docsArr as $doc): 
+	$nameArr = $doc['filename'];
+	$nameType = explode(".", $nameArr);
+	$docTypeName = array_pop($nameType);
+	$docSize = formatSizeUnits($doc['filesize']);
+	$url =  file_create_url($doc['uri']);
+	$path_url = parse_url($url);
+	$docPath = $path_url['path'];
+	?>
+    <tr>
+      <td>
+        <?= $doc['description']; ?>
+      </td>
+      <td>
+        <?= $docSize ?>
+      </td>
+      <td>
+        <?= $docTypeName ?>
+      </td>
+      <td><a href="<?= $docPath; ?>" download>скачать</a></td>
+    </tr>
+    <?php endforeach; ?>
+  </table>
+</div>
+</div>

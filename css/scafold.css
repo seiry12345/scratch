@@ -1,0 +1,163 @@
+@import url("variables.less");
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section {
+  display: block;
+}
+
+blockquote, q {
+  quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+  content: '';
+  content: none;
+}
+table {
+  width: 100%;
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+input {
+  line-height: normal;
+}
+
+* {
+  box-sizing: border-box;
+  outline: none;
+}
+
+html,body {
+  height: 100%;
+}
+
+html ul,
+html li {
+  padding: 0;
+  margin: 0;
+  list-style-type: none;
+}
+
+img {
+  max-width: 100%;
+  vertical-align: top;
+  height: auto;
+}
+
+p {
+  margin: 0;
+  margin-bottom: 15px;
+}
+
+h1,h2,h3 {
+  margin: 0;
+  margin-bottom: 25px;
+}
+
+h2 {
+  color: @base-color;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+body {
+  background-color: #fff;
+  margin: 0;
+  padding: 0;
+  position: relative;
+  width: 100%;
+  min-width: 320px;
+  font-family: @sf;
+  font-size: 14px;
+  line-height: normal;
+  color: @base-color;
+}
+
+.body-hidden {
+  overflow: hidden;
+}
+
+a {
+  text-decoration: none;
+  color: @base-color;
+  transition: all .25s ease;
+  &:hover {
+    text-decoration: none;
+  }
+}
+
+input::-moz-placeholder { color:  @base-color;  font-family: @sf; font-size: 15px; }
+input::-webkit-input-placeholder { color:  @base-color;  font-family:@sf; font-size: 15px;}
+textarea::-moz-placeholder { color:  @base-color;   font-family: @sf;}
+textarea::-webkit-input-placeholder { color: @base-color;  font-family:@sf; font-size: 15px;}
+
+
+.clearfix::after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+strong {
+  font-weight: 700;
+}
+
+em {
+  font-style: italic;
+}
+
+.button {
+  display: inline-block;
+  padding: 18px 48px;
+  background-color: @active;
+  color: #fff;
+  font-family: @sf;
+  font-size: 16px;
+  text-decoration: none;
+  font-weight: 400;
+  border: 3px solid @active;
+  border-radius: 18px;
+  outline: none;
+  cursor: pointer;
+  transition: all .25s ease;
+  &:hover{
+    background-color: @active;
+    color: #fff;
+  }
+}
+
+.visually-hidden {
+  position: absolute;
+  clip: rect(0 0 0 0);
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+}
+
+.wrapper {
+  max-width: 1140px;
+  margin: 0 auto;
+  padding: 0 10px;
+}

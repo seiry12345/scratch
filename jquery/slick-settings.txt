@@ -1,0 +1,88 @@
+if ($('.project-slider').length) {
+        //count !!!!before slick init
+        $(".main-slider").on('init', function(e, slick) {
+            $(".main-slider-all").text(slick.slideCount);
+        });
+
+        $(".main-slider").on('beforeChange', function (event, slick, currentSlide, nextSlide) {
+            $(".main-slider-count-current").text(nextSlide += 1);
+
+        });
+
+        $('.project-slider').slick({
+            slidesToShow: 5,
+            slidesToScroll: 1,
+            arrows: false,
+            prevArrow: '<button type="button" class="slick-prev"></button>',
+            nextArrow: '<button type="button" class="slick-next"></button>',
+            dots: true,
+            infinite: true,
+            speed: 600
+        });
+    }
+    
+    
+    
+    
+    .slick-dots {
+        width: 50px;
+        display: flex;
+        justify-content: space-between;
+        position: absolute;
+        left: 20px;
+        bottom: 20px;
+    }
+
+    .slick-dots li {
+        width: 10px;
+        height: 10px;
+        background-color: #fff;
+        border-radius: 50%;
+        display: flex;
+        padding-left: 2px;
+    }
+
+    .slick-dots button {
+        align-self: center;
+        width: 6px;
+        height: 6px;
+        padding: 0;
+        background-color: #10a4e5;
+        border-radius: 50%;
+        border: none;
+        cursor: pointer;
+        outline: none;
+        opacity: 1;
+    }
+
+    .slick-active button {
+        opacity: 0;
+    }
+    .slick-slide {
+    outline: none;
+}
+
+.slick-prev,
+.slick-next {
+    z-index: 2;
+    position: absolute;
+    top: 50%;
+    margin-top: -18px;
+    width: 35px;
+    height: 55px;
+    background: url("@{active-path}css/images/slick-prev.png") no-repeat center;
+    background: url('/sites/all/themes/oc_atoll/images/prev.png') no-repeat center;
+    outline: none;
+    border: none;
+    cursor: pointer;
+}
+.slick-prev {
+    left: 15px;
+}
+.slick-next {
+    right: 15px;
+    background-image: url("@{active-path}css/images/slick-next.png");
+}
+.slick-list {
+    margin: 0 75px;
+}

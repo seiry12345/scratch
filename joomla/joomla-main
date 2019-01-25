@@ -1,0 +1,2 @@
+<?php if (JRequest::getVar('view') == "frontpage") : ?>
+<?php endif; ?>

@@ -1,0 +1,39 @@
+
+
+CModule::IncludeModule("highloadblock");
+$hldata = Bitrix\Highloadblock\HighloadBlockTable::getById($Highloadblock_id)->fetch();
+$hlentity = Bitrix\Highloadblock\HighloadBlockTable::compileEntity($hldata);
+$hlDataClass = $hldata["NAME"]."Table";
+
+$result = $hlDataClass::getList(array(
+        "select" => array("UF_NAME"),
+        "order" => array(),
+        "filter" => array("UF_XML_ID"=>$xmlID),
+        ));
+
+        while($res = $result->fetch())
+        {    
+            $tital[] = $res["UF_NAME"];
+         }
+
+
+
+
+
+
+use Bitrix\Highloadblock as HL;
+use Bitrix\Main\Entity;
+if("ПРОВЕРЯЕМ СПРАВОЧНИКИ И ПРЕОБРАЗУЕМ ИХ ЗНАЧЕНИЯ"&&CModule::IncludeModule('highloadblock')){
+   foreach ($arResult['PROPERTIES'] as $key => &$property) {
+      if($property["PROPERTY_TYPE"]=="S"&&$property["USER_TYPE_SETTINGS"]["TABLE_NAME"]){
+         //получим данынй HL
+         $hldata = array_pop(HL\HighloadBlockTable::getList(array('filter' => array('TABLE_NAME'=>$property["USER_TYPE_SETTINGS"]["TABLE_NAME"])))->fetchAll());
+         //затем инициализировать класс сущности
+         $entityClass = HL\HighloadBlockTable::compileEntity($hldata)->getDataClass();
+         $res = $entityClass::getList(array('select' => array('*'),'order' => array('ID' => 'ASC'),'filter' => array('UF_XML_ID' => $property["VALUE"])))->fetchAll();
+         if(is_array($res)&&!empty($res)){
+            $property["~VALUE"] = $res;
+         }
+      }
+   }
+}

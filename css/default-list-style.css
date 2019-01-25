@@ -1,0 +1,17 @@
+position: relative;
+    display: block;
+    margin-top: 1em;
+    margin-bottom: 2em;
+    margin-left: 0;
+    margin-right: 0;
+    padding-left: 30px;
+    li {
+        &::before {
+            content: '—';
+            position: absolute;
+            left: 5px;
+        }
+    }
+    .li:not(:last-child) {
+        padding-bottom: 1em;
+    }

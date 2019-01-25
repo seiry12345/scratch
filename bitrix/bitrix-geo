@@ -1,0 +1,6 @@
+use Bitrix\Main\Service\GeoIp\Manager;
+
+$ip = Manager::getRealIp();
+$geoIpData = Manager::getDataResult($ip,LANGUAGE_ID);
+$cityName = Manager::getCityName($ip,LANGUAGE_ID);
+$regionName = $geoIpData->getGeoData()->regionName;

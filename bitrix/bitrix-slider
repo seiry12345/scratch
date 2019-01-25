@@ -1,0 +1,91 @@
+<h1 class="bx-title dbg_title" id="pagetitle"><?= $APPLICATION->ShowTitle(false); ?></h1> ZAGOLOVOK
+<div class="main-slider">
+    <? foreach ($arResult["ITEMS"] as $arItem): ?>
+        <div class="slide-item" id="<?= $this->GetEditAreaId($arItem['ID']); ?>">
+            <? if ($arParams["DISPLAY_PICTURE"] != "N" && is_array($arItem["PREVIEW_PICTURE"])): ?>
+                <? if (!$arParams["HIDE_LINK_WHEN_NO_DETAIL"] || ($arItem["DETAIL_TEXT"] && $arResult["USER_HAVE_ACCESS"])): ?>
+                    <div class="img">
+                        <a href="<?= $arItem["DETAIL_PAGE_URL"] ?>">
+                            <img
+                                    class="preview_picture"
+                                    border="0"
+                                    src="<?= $arItem["PREVIEW_PICTURE"]["SRC"] ?>"
+                                    width="<?= $arItem["PREVIEW_PICTURE"]["WIDTH"] ?>"
+                                    height="<?= $arItem["PREVIEW_PICTURE"]["HEIGHT"] ?>"
+                                    alt="<?= $arItem["PREVIEW_PICTURE"]["ALT"] ?>"
+                                    title="<?= $arItem["PREVIEW_PICTURE"]["TITLE"] ?>"
+                            />
+                        </a>
+                    </div>
+                <? else: ?>
+                    <div class="img">
+                        <img
+                                class="preview_picture"
+                                border="0"
+                                src="<?= $arItem["PREVIEW_PICTURE"]["SRC"] ?>"
+                                width="<?= $arItem["PREVIEW_PICTURE"]["WIDTH"] ?>"
+                                height="<?= $arItem["PREVIEW_PICTURE"]["HEIGHT"] ?>"
+                                alt="<?= $arItem["PREVIEW_PICTURE"]["ALT"] ?>"
+                                title="<?= $arItem["PREVIEW_PICTURE"]["TITLE"] ?>"
+                        />
+                    </div>
+                <? endif; ?>
+            <? endif ?>
+            <div class="wrapp">
+                <? if ($arParams["DISPLAY_NAME"] != "N" && $arItem["NAME"]): ?>
+                    <? if (!$arParams["HIDE_LINK_WHEN_NO_DETAIL"] || ($arItem["DETAIL_TEXT"] && $arResult["USER_HAVE_ACCESS"])): ?>
+                        <h3><a href="<? echo $arItem["DETAIL_PAGE_URL"] ?>"><? echo $arItem["NAME"] ?></a><br/></h3>
+                    <? else: ?>
+                        <? echo $arItem["NAME"] ?>
+                    <? endif; ?>
+                <? endif; ?>
+                <div>
+                    <? if ($arParams["DISPLAY_PREVIEW_TEXT"] != "N" && $arItem["PREVIEW_TEXT"]): ?>
+                        <? echo $arItem["PREVIEW_TEXT"]; ?>
+                    <? endif; ?>
+
+                    <? foreach ($arItem["DISPLAY_PROPERTIES"] as $pid => $arProperty): ?>
+                        <div class="button">
+                            <?= $arProperty["NAME"] ?>
+                            $arItem['PROPERTIES']['url']['VALUE']!!!!!!!!!!!!!!!
+                            <? if ($arProperty["DISPLAY_VALUE"]): ?>
+                                <?= $arProperty["DISPLAY_VALUE"]; ?>
+                            <? endif; ?>
+                        </div>
+                    <? endforeach; ?>
+                </div>
+            </div>
+        </div>
+    <? endforeach; ?>
+</div>
+
+
+
+
+//breadcrumb
+if(empty($arResult))
+	return "";
+
+$strReturn = '';
+
+$strReturn .= '<ol class="breadcrumb">';
+
+$itemSize = count($arResult);
+for($index = 0; $index < $itemSize; $index++)
+{
+	$title = htmlspecialcharsex($arResult[$index]["TITLE"]);
+
+
+	if($arResult[$index]["LINK"] <> "" && $index != $itemSize-1)
+	{
+		$strReturn .= '<li><a href="'.$arResult[$index]["LINK"].'" title="'.$title.'">'.$title.'</a></li>';
+	}
+	else
+	{
+		$strReturn .= '<li class="active">'.$title.'</li>';
+	}
+}
+
+$strReturn .= '</ol>';
+
+return $strReturn;
