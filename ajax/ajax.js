@@ -1,20 +1,29 @@
-$.ajax({
-	type: 'POST',
-	url: 'ajax/ajax.php',
-	data: msg,
-	success: function (response) {
-		if (response == "OK") {
-			swal({title: "Заявка отправлена!", text: "Мы свяжемся с вами в самое ближайшее время.", type: "success", confirmButtonColor: "8ABA0A", confirmButtonText: "Закрыть"});
-		} else {
-			swal({title: "Ошибка!", text: "При отправке сообщения произошла ошибка. Попробуйте связаться с нами по телефону.", type: "error", confirmButtonColor: "8ABA0A", confirmButtonText: "ОК"});
-		}
-	},
-	error: function (xhr, str) {
-		swal({title: "Ошибка!", text: "При отправке сообщения произошла ошибка. Попробуйте связаться с нами по телефону.", type: "error", confirmButtonColor: "8ABA0A", confirmButtonText: "ОК"});
-	},
-	complete: function () {
-		$(_this).removeAttr('disabled');
-		$('.button.call-button-submit').val('Отправить');
-		$('.modal-call-close').trigger('click');
-	}
-});
+$('.front-form').submit(function (e) {
+    e.preventDefault();
+    var phone = $(this).find("input[name = 'phone']").val();
+    var formDate = $(this).find("input[name = 'date']").val();
+    var msg = $(this).serialize();
+    $.ajax({
+      url: "/ajax/callback.php",
+      type: "POST",
+      dataType: "json",
+      data: msg,
+      success: function (response) {
+        Swal({
+          type: response.type,
+          title: response.title,
+          text: response.message
+        });
+
+      },
+      error: function (xhr, str) {
+        Swal({
+          type: response.type,
+          title: response.title,
+          text: response.message,
+          footer: '<div>Возникла ошибка:' + xhr.responseCode + '</div>'
+        });
+      }
+    });
+    return false;
+  });
