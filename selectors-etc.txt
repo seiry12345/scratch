@@ -65,11 +65,6 @@ opacity 1; не прозрачное
 transition all 0.2 ease;
 https://blog.logrocket.com/level-up-your-css-selector-skills-5d7bb45ddd37?ct=t(hamail_20180615)
 
-https://technopoint.ru/product/6a787b09bae53330/korpus-dexp-dc-102b-cernyj-sale/
-https://technopoint.ru/product/8ba231ddd32b3330/operativnaa-pamat-apacer-el04g2tlfh-4-gb-sale/
-https://technopoint.ru/product/9bb321e60dc73330/materinskaa-plata-asrock-ab350-pro4-sale/
-https://technopoint.ru/product/9c06e3b0c8063330/blok-pitania-thermaltake-smart-rgb-500w-ps-spr-0500nhsawe-1-sale/
-
 
 
 svg-inline--fa
