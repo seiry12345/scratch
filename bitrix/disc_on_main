@@ -1,0 +1,7 @@
+вызываем catalog.top
+перед вызовом размещаем 
+$GLOBALS['arrFilter'] = [
+        "ACTIVE" => "Y",
+        'PROPERTY_HIT_VALUE' => 'Y'
+        ]
+    ?>
