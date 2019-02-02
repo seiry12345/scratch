@@ -6,6 +6,12 @@ style 				1,0,0,0
 li						0,0,0,1
 *							0
 
+trim-text {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
 background-image: -webkit-linear-gradient(90deg, rgb(255, 255, 255) 86%, rgba(220, 227, 238, 0.94) 100%);
 https://html5book.ru/krasivaya-forma-dlya-sayta/
 http://www.colorzilla.com/gradient-editor/
