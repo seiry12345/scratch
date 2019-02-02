@@ -1,0 +1,46 @@
+body {
+	margin: 0;
+	padding: 0;
+	font-family: sans-serif;
+	color: #000;
+}
+
+section {
+	position: relative;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	background: url('./img/blur.jpg') no-repeat center top;
+	background-size: cover;
+	background-attachment: fixed;
+	height: 100vh;
+}
+
+section .box {
+	position: relative;
+	max-width: 600px;
+	padding: 50px 15px;
+	box-shadow: 0 5px 15px rgba(0,0,0,0.5);
+	color: #000;
+	overflow: hidden;
+}
+
+section .box:before {
+	content: '';
+	position: absolute;
+	top: -20px;
+	left: -20px;
+	right: -20px;
+	bottom: -20px;
+	background: url('./img/blur.jpg') no-repeat center top;
+	background-size: cover;
+	background-attachment: fixed;
+	filter: blur(10px);
+}
+
+section .box p {
+	position: relative;
+	margin: 0 0 20px;
+	text-transform: uppercase;
+	z-index: 2;
+}
