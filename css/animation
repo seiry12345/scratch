@@ -1,2 +1,16 @@
 https://wowjs.uk/    on scroll
 https://daneden.github.io/animate.css/
+
+
+.flex-active-slide .slide-image {
+	animation: zoomout 5s;
+}
+
+@keyframes zoomout {
+	from {
+		transform: scale(1.3);
+	}
+	to {
+		transform: scale(1);
+	}
+}
