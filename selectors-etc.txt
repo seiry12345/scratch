@@ -12,6 +12,8 @@ trim-text {
   white-space: nowrap;
 }
 
+https://tproger.ru/translations/javascript-cheatsheet/
+
 background-image: -webkit-linear-gradient(90deg, rgb(255, 255, 255) 86%, rgba(220, 227, 238, 0.94) 100%);
 https://html5book.ru/krasivaya-forma-dlya-sayta/
 http://www.colorzilla.com/gradient-editor/
