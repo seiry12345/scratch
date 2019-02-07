@@ -1,0 +1,132 @@
+table {
+  width: 100%;
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+input {
+  line-height: normal;
+}
+* {
+  box-sizing: border-box;
+  outline: none;
+}
+html,
+body {
+  height: 100%;
+}
+html ul,
+html li {
+  padding: 0;
+  margin: 0;
+  list-style-type: none;
+}
+img {
+  max-width: 100%;
+  vertical-align: top;
+  height: auto;
+}
+p {
+  margin: 0;
+  margin-bottom: 15px;
+}
+h1,
+h2,
+h3 {
+  margin: 0;
+  margin-bottom: 25px;
+}
+h2 {
+  font-weight: 700;
+  text-transform: uppercase;
+}
+body {
+  margin: 0;
+  padding: 0;
+  position: relative;
+  width: 100%;
+  min-width: 320px;
+  background-color: #fff;
+  font-family: 'Roboto Condensed', sans-serif;
+  font-size: 18px;
+  line-height: normal;
+  color: #333333;
+}
+.body-hidden {
+  overflow: hidden;
+}
+a {
+  text-decoration: none;
+  color: #333333;
+  transition: all 0.25s ease;
+}
+a:hover {
+  text-decoration: none;
+}
+.clearfix::after {
+  content: "";
+  display: table;
+  clear: both;
+}
+strong {
+  font-weight: 700;
+}
+em {
+  font-style: italic;
+}
+.button {
+  display: inline-block;
+  max-width: 427px;
+  padding: 7px 10px;
+  background-color: #fff15f;
+  color: #333333;
+  font-size: 20px;
+  text-transform: uppercase;
+  border: 1px solid transparent;
+  outline: none;
+  cursor: pointer;
+  transition: all 0.25s ease;
+}
+.button:hover {
+  background-color: transparent;
+  border: 1px solid #317194;
+}
+.default-list {
+  position: relative;
+  display: block;
+  margin-top: 1em;
+  margin-bottom: 2em;
+  margin-left: 0;
+  margin-right: 0;
+  padding-left: 30px;
+  list-style: disc;
+}
+.default-list li {
+  list-style: disc;
+}
+.default-list .li:not(:last-child) {
+  padding-bottom: 1em;
+}
+.visually-hidden {
+  position: absolute;
+  clip: rect(0 0 0 0);
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+}
+.scrollToTop {
+  display: none;
+  opacity: 0.6;
+  position: fixed;
+  bottom: 25px;
+  right: 25px;
+  width: 0;
+  height: 0;
+  border-style: solid;
+  border-width: 0 21.5px 37px 21.5px;
+  border-color: transparent transparent #317194 transparent;
+  cursor: pointer;
+  transition: all 0.25s ease;
+}
+.scrollToTop:hover {
+  opacity: 1;
+}
