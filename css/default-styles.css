@@ -73,6 +73,10 @@ strong {
 em {
   font-style: italic;
 }
+input {
+  width: 100%;
+  border: 0;
+}
 .button {
   display: inline-block;
   max-width: 427px;
