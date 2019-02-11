@@ -21,3 +21,18 @@ https://habr.com/ru/post/436846/
 http://aamirafridi.com/jquery/jquery-marquee-plugin
 Composing Software (book)
 https://medium.com/@alexmaisiura/tips-and-tricks-that-you-may-need-to-know-when-you-work-in-javascript-q-a-799ce3c4b4d2
+
+1)Inspirational Websites Roundup #1
+https://tympanus.net/codrops/2019/02/04/inspirational-websites-roundup-1/
+      
+2) Building a modern carousel with CSS scroll snap, smooth scrolling, and pinch-zoom
+https://nolanlawson.com/2019/02/10/building-a-modern-carousel-with-css-scroll-snap-smooth-scrolling-and-pinch-zoom/
+
+3)Position: stuck; — and a Way to Fix It
+https://uxdesign.cc/position-stuck-96c9f55d9526
+
+4)HTML slides without frameworks, just CSS
+https://www.chenhuijing.com/blog/html-slides-without-frameworks/
+
+5) How to Beat 5 Common JavaScript Interview Challenges
+https://www.sitepoint.com/5-common-coding-interview-challenges/
