@@ -36,3 +36,5 @@ https://www.chenhuijing.com/blog/html-slides-without-frameworks/
 
 5) How to Beat 5 Common JavaScript Interview Challenges
 https://www.sitepoint.com/5-common-coding-interview-challenges/
+
+6) blog on react https://blog.cloudboost.io/learn-how-to-create-a-simple-blog-with-react-node-c05fa6889de3
