@@ -1,0 +1,39 @@
+.placeholder(@rules) {
+  &::-webkit-input-placeholder {
+    @rules();
+  }
+
+  &:-moz-placeholder {
+    @rules();
+  }
+
+  &::-moz-placeholder {
+    @rules();
+  }
+
+  &:-ms-input-placeholder {
+    @rules();
+  }
+}
+
+input {
+  .placeholder({color: green});
+}
+
+/* стили для webkit */
+#field2::-webkit-input-placeholder {
+  color: #00f;
+}
+#field3::-webkit-input-placeholder {
+  color: #090;
+  background: lightgreen;
+  text-transform: uppercase;
+}
+
+.transition(@opt) {
+  transition: @opt;
+  -webkit-transition: @opt;
+  -o-transition: @opt;
+  -moz-transition: @opt;
+  -ms-transition: @opt;
+}
