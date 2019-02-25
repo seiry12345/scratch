@@ -1,4 +1,4 @@
-$bIsMainPage = $APPLICATION->GetCurPage(false) == SITE_DIR;
+<?php $bIsMainPage = $APPLICATION->GetCurPage(false) == SITE_DIR; ?>
 
 <?
   function bclass() {
@@ -15,10 +15,12 @@ $bIsMainPage = $APPLICATION->GetCurPage(false) == SITE_DIR;
 <!--[if lt IE 9]>
     <script src="<?= CUtil::GetAdditionalFileUrl(SITE_TEMPLATE_PATH.'путь до js файла') ?>"></script>
 <![endif]-->
+<?php 
 Asset::getInstance()->addJs(SITE_TEMPLATE_PATH . "/js/fix.js");
 Asset::getInstance()->addCss(SITE_TEMPLATE_PATH . "/styles/fix.css");
 Asset::getInstance()->addString("<link href='http://fonts.googleapis.com/css?family=PT+Sans:400&subset=cyrillic' rel='stylesheet' type='text/css'>"); 
 CJSCore::Init(array("jquery"));
+?>
 
 Включение текстовой области( вместо text можно вставить html)
 https://dev.1c-bitrix.ru/api_help/main/reference/cmain/includefile.php
@@ -51,9 +53,9 @@ false,
 Array(
 'ID', 
 'NAME', 
-'PREVIEW_PICTURE', 
-'PREVIEW_TEXT', 
-'PROPERTY_LIN_PR' <====== кастомное свойство из полей
+'PREVIEW_PICTURE',
+'PREVIEW_TEXT',
+'PROPERTY_LIN_PR' # кастомное свойство из полей
 )
 );
 while($ar_fields = $my_slider->GetNext())
@@ -153,13 +155,12 @@ function my_crop($text, $length, $clearTags = true)
           <?php endif; ?>
 
 
-
+<?php
 $this->SetViewTarget('smart_filter');  //// vertical_catalog
 ///// вызываемый компонент
 $this->EndViewTarget('smart_filter');
+?>
 <? $APPLICATION->ShowViewContent('smart_filter'); ?> //// вызываем в header.php
-
-
 
 
 
@@ -168,7 +169,7 @@ $this->EndViewTarget('smart_filter');
 2. Размещаем в index.php компонент news.list с параметром "PARENT_SECTION_CODE" => $_REQUEST['SECTION_CODE'],
 3. Размещаем в detail.php компонент news.detail с параметром "ELEMENT_CODE" => $_REQUEST["ELEMENT_CODE"]
 4. Пишем в файле urlrewrite.php правило:
-
+<?php
 1 => array(
        'CONDITION' => '#^/services/([a-zA-Z0-9-]{1,})/([a-zA-Z0-9-]{1,})/$#',
        'RULE'      => 'ELEMENT_CODE=$2',
@@ -181,7 +182,7 @@ $this->EndViewTarget('smart_filter');
        'ID'        => '',
        'PATH'      => '/services/index.php',
        'SORT'      => 30,),
-
+?>
 
 https://camouf.ru/blog-note/722/?sphrase_id=32852  Вывод разделов каталога в меню
 
