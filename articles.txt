@@ -40,3 +40,5 @@ https://www.sitepoint.com/5-common-coding-interview-challenges/
 6) blog on react https://blog.cloudboost.io/learn-how-to-create-a-simple-blog-with-react-node-c05fa6889de3
 
 https://help.ubuntu.ru/wiki/apachemysqlphp
+
+https://codepen.io/samirc/pen/JKmRjV
