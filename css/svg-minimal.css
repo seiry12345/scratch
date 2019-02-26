@@ -1,0 +1,16 @@
+svg,
+svg rect {
+	stroke: #000;
+	stroke-width: --border-width;
+	stroke-dasharray: --containerWidth;
+	animation: animate 3s linear infinite;
+}
+
+@keyframes animate {
+	0% {
+		stroke-dashoffset: 800;
+	}
+	100% {
+		stroke-dashoffset: 0;
+	}
+}
