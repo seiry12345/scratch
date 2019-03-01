@@ -1,0 +1,12 @@
+<div class="news-detail">
+  <div class="news-detail-date"><span><?= $arResult["DISPLAY_ACTIVE_FROM"] ?></span></div>
+  <div class="news-detail-img">
+    <img
+        class="detail_picture"
+        src="<?= $arResult["DETAIL_PICTURE"]["SRC"] ?>"
+        alt="<?= $arResult["DETAIL_PICTURE"]["ALT"] ?>"
+        title="<?= $arResult["DETAIL_PICTURE"]["TITLE"] ?>"
+    />
+  </div>
+  <div class="news-detail-text"><? echo $arResult["DETAIL_TEXT"]; ?></div>
+</div>
