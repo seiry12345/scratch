@@ -1,0 +1,13 @@
+<?php $curPage = $APPLICATION->GetCurPage(false) == SITE_DIR; ?>
+
+<?
+function bclass()
+{
+	global $APPLICATION;
+	$DirExp = explode('/', $APPLICATION->GetCurDir());
+	if ($DirExp[1] !== ''): return ' class="' . $DirExp[1] . '"'; endif;
+}
+
+?>
+
+<body class="<? if ($curPage == '/index.php'): ?>front<? else: ?><?= bclass(); ?><? endif; ?>">

@@ -1,0 +1,16 @@
+<?php if (!$USER->IsAuthorized()): ?>
+	<ul class="login-register">
+		<li>
+			<a href="/auth?login=yes">Вход</a>
+		</li>
+		<li>
+			<a href="/auth?register=yes">Регистрация</a>
+		</li>
+	</ul>
+<?php else: ?>
+	<ul class="login-register">
+		<li>
+			<a href="/personal">Личный кабинет</a>
+		</li>
+	</ul>
+<?php endif; ?>

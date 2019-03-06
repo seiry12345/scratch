@@ -1,0 +1,22 @@
+<? if (!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED !== true) die(); ?>
+
+<? $APPLICATION->IncludeFile(
+	SITE_TEMPLATE_PATH . "/include/slogan.php",
+	array(),
+	array(
+		"MODE" => "file"
+	)
+); ?>
+
+
+<div id="header">
+	<? $APPLICATION->IncludeComponent("bitrix:main.include", ".default", array(
+		"AREA_FILE_SHOW" => "sect",
+		"AREA_FILE_SUFFIX" => "headerinc",
+		"AREA_FILE_RECURSIVE" => "Y",
+		"EDIT_TEMPLATE" => "sect_headerinc.php"
+	),
+		false
+	); ?>
+</div>
+Код шапки каждого из разделов будет храниться в файле sect_headerinc.php. Параметр "AREA_FILE_RECURSIVE" => "Y" означает, что такая же "шапка" появится у всех подразделов данного раздела, если родительский sect_headerinc.php не будет специально перекрыт у кого-то из нижележащих разделов.
