@@ -1,5 +1,8 @@
 <a href="<? echo $arResult["LIST_PAGE_URL"] . $arResult["SECTION"]["CODE"] . '/'; ?>">ссылка</a> на преыдущий раздел
 
+https://zombzone.ru/?p=141         ajax compare
+https://camouf.ru/blog-note/2375/  ajax compare
+
 подключение скрипта с комментариями
 <!--[if lt IE 9]>
 <script src="<?= CUtil::GetAdditionalFileUrl(SITE_TEMPLATE_PATH . 'путь до js файла') ?>"></script>
