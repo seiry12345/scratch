@@ -1,3 +1,5 @@
+https://codd-wd.ru/shpargalka-yandeks-karty-yandex-maps-api/
+
 html
 <script src="http://api-maps.yandex.ru/2.1.17/?lang=ru_RU" type="text/javascript"></script>
 <div class="wrapper">
