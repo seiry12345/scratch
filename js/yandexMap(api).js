@@ -51,3 +51,29 @@ function init() {
 }
 }
 
+
+
+
+
+
+
+
+ymaps.ready(function () {
+    var location = ymaps.geolocation.get();
+    // Асинхронная обработка ответа.
+    location.then(
+            function (result) {              
+              var loc = result.geoObjects.get(0).getAdministrativeAreas();
+              var country = result.geoObjects.get(0).getCountry();
+              var loc2 = result.geoObjects.get(0).getLocalities();
+              console.log(loc);
+              console.log(loc2);
+              console.log(country);
+              // Добавление местоположения на карту.
+              //myMap.geoObjects.add(result.geoObjects)
+            },
+            function (err) {
+              console.log('Ошибка: ' + err)
+            }
+    );
+  });
