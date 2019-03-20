@@ -1,0 +1,28 @@
+<?php
+                $sales_node_arr = views_get_view_result('office_sales');
+                foreach ($sales_node_arr as $k => $v):
+                  $sales = node_load($v->nid);
+                  ?>
+
+                  <li class="page-contacts__dropdown-item">
+                    <h4><?= $sales->title ?></h4>
+                    <?php if (isset($sales->field_off_sales_address[0]['value'])): ?>
+                      <p class="page-contacts__address">Адрес: <?= $sales->field_off_sales_address[0]['value'] ?></p>
+                    <?php endif; ?>
+                    <?php if (isset($sales->field_off_sales_phone[0]['value'])): ?>
+                      <p class="page-contacts__phone">Тел.: <?= $sales->field_off_sales_phone[0]['value'] ?></p>
+                    <?php endif; ?>
+                    <?php if (isset($sales->field_off_sales_email[0]['value'])): ?>
+                      <p class="page-contacts__email">E-mail: <a href="<?= $sales->field_off_sales_email[0]['value'] ?>"><?= $sales->field_off_sales_email[0]['value'] ?></a></p>
+                    <?php endif; ?>
+                    <?php if (isset($sales->field_off_sales_cite[0]['value'])): ?>
+                      <p>Сайт: <a href="<?= $sales->field_off_sales_cite[0]['value'] ?>" rel="nofollow" target="_blank"><?= $sales->field_off_sales_cite[0]['value'] ?></a></p>
+                    <?php endif; ?>
+                    <?php
+                    if (isset($sales->body)) {
+                      print $sales->body;
+                    }
+                    ?>
+                  </li>
+
+                <?php endforeach; ?>
