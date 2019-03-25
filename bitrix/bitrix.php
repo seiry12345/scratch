@@ -2,6 +2,7 @@
 
 https://zombzone.ru/?p=141         ajax compare
 https://camouf.ru/blog-note/2375/  ajax compare
+https://dev.1c-bitrix.ru/learning/course/index.php?COURSE_ID=43&LESSON_ID=2917
 
 подключение скрипта с комментариями
 <!--[if lt IE 9]>
