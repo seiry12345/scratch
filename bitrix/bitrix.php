@@ -4,6 +4,10 @@ https://zombzone.ru/?p=141         ajax compare
 https://camouf.ru/blog-note/2375/  ajax compare
 https://dev.1c-bitrix.ru/learning/course/index.php?COURSE_ID=43&LESSON_ID=2917
 https://dev.1c-bitrix.ru/api_help/js_lib/index.php
+
+CFile::GetPath($photo)
+
+
 подключение скрипта с комментариями
 <!--[if lt IE 9]>
 <script src="<?= CUtil::GetAdditionalFileUrl(SITE_TEMPLATE_PATH . 'путь до js файла') ?>"></script>
