@@ -10,47 +10,66 @@ js
 var map;
 var geomap;
 
-$(function () {
-    var map = document.getElementById('map');
-    if (map !== null) {
-	ymaps.ready(init);
-    }
+jQuery(function () {
+  var map = document.getElementById('map');
+  if (map !== null) {
+    ymaps.ready(init);
+  }
 });
 
 function init() {
-    map = new ymaps.Map('map', {
-	center: [, ],
-	zoom: 15
-    });
-    company_1 = new ymaps.Placemark([, ], {
-	balloonContentHeader: "организация",
-	balloonContentBody: "адрес",
-	balloonContentFooter: "контакты"}, {
-	iconLayout: 'default#image',
-	iconImageSize: [40, 51]
-    });
+  map = new ymaps.Map('map', {
+    center: [123, 123],
+    zoom: 18,
+    controls: ['smallMapDefaultSet'],
+  });
+  var objectManager = new ymaps.ObjectManager({
+    geoObjectOpenBalloonOnClick: false
+  });
+  zoomButton = new ymaps.control.Button("Отдалить");
+  map.controls.add(zoomButton, {float: 'right'});
 
 
-    company_2 = new ymaps.Placemark([, ], {
-	balloonContentHeader: "организация",
-	balloonContentBody: "адрес",
-	balloonContentFooter: "контакты"}, {
-	iconLayout: 'default#image',
-	iconImageSize: [40, 51]
-    });
+  company_adress = new ymaps.Placemark([123, 123], {
+    balloonContentHeader: "title",
+    balloonContentBody: "address",
+    balloonContentFooter: "phone"}, {
+    iconLayout: 'default#image',
+    iconImageHref: '/images/pin.png',
+    iconImageSize: [64, 64],
+    iconImageOffset: [-32, -64]
+  });
 
-    map.geoObjects.add(company_1);
-    map.geoObjects.add(company_2);
+  company_adress2 = new ymaps.Placemark([123, 123], {
+    balloonContentHeader: "title",
+    balloonContentBody: "address",
+    balloonContentFooter: "phone"}, {
+    iconLayout: 'default#image',
+    iconImageHref: '/images/pin.png',
+    iconImageSize: [64, 64],
+    iconImageOffset: [-32, -64]
+  });
 
-    map.setBounds(map.geoObjects.getBounds());
+  map.geoObjects.add(company_adress);
+  map.geoObjects.add(company_adress2);
 
-    map.geoObjects.events.add('click', function (e) {
-	var coords = e.get('coords');
-	var myCoords = coords[0].toPrecision(14);
-	map.setCenter(myCoords);
-	map.setZoom(16);
-    });
-}
+  map.behaviors.disable('scrollZoom');
+  map.setBounds(map.geoObjects.getBounds());
+  map.geoObjects.add(objectManager);
+
+
+  zoomButton.events.add('click', function (e) {
+    e.preventDefault();
+    map.setBounds(map.geoObjects.getBounds(), {checkZoomRange: true});
+  });
+
+  map.geoObjects.events.add('click', function (e) {
+    map.panTo(e.get('target').geometry.getCoordinates())
+        .then(function () {
+          map.setZoom(16);
+          e.get('target').balloon.open();
+        });
+  });
 }
 
 
