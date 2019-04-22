@@ -1,0 +1,6 @@
+$form['privacy'] = array(
+      '#type' => 'checkbox',
+      '#title' => 'Согласен с <a href="/policy" target="_blank">политикой конфиденциальности</a>',
+      '#attributes' => ['checked' => ''],
+      '#required' => TRUE,
+  );

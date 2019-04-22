@@ -1,0 +1,13 @@
+<?php
+                  $arSKU = CCatalogSKU::getOffersList($arResult[ID], 0, array('ACTIVE' => 'Y'), array('NAME'), array('HEIGHT', 'WIDTH'));
+                  print '<pre>';
+                  print_r($arSKU);
+                  print '</pre>';
+                  CIBlockElement::GetList(
+                  array arOrder = Array("SORT" => "ASC"),
+                  array arFilter = Array(),
+                  mixed arGroupBy = false,
+                  mixed arNavStartParams = false,
+                  array arSelectFields = Array()
+                  );
+                  ?>

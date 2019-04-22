@@ -101,7 +101,8 @@ input {
   margin-bottom: 2em;
   margin-left: 0;
   margin-right: 0;
-  padding-left: 30px;
+  -webkit-padding-start: 40px;
+  padding-inline-start: 40px;
   list-style: disc;
 }
 .default-list li {

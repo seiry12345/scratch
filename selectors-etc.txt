@@ -11,7 +11,7 @@ trim-text {
   text-overflow: ellipsis;
   white-space: nowrap;
 }
-
+https://codepen.io/nodws/pen/ugFcC
 https://tproger.ru/translations/javascript-cheatsheet/
 
 background-image: -webkit-linear-gradient(90deg, rgb(255, 255, 255) 86%, rgba(220, 227, 238, 0.94) 100%);
@@ -19,7 +19,7 @@ https://html5book.ru/krasivaya-forma-dlya-sayta/
 http://www.colorzilla.com/gradient-editor/
 
 https://codepen.io/jaycbrf/pen/iBszr
-piworol@mail-share.com
+                                    bezawisaxo@mail-register.com
 
 https://freebiesupply.com/blog/css-text-shadows                                                  text-shadows
 https://tympanus.net/codrops/2018/11/29/an-introduction-to-css-shapes/                           shapes
