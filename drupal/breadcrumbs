@@ -1,0 +1,14 @@
+in template.php
+if ($arr[1] == 'news' && isset($arr[2])) {
+$breadcrumbs = array();
+$breadcrumbs[] = l('Главная', '<front>');
+$breadcrumbs[] = l('Новости', 'news');
+$breadcrumbs[] = drupal_get_title();
+drupal_set_breadcrumb($breadcrumbs);
+}
+
+in page.tpl
+<?php if (!empty($breadcrumb) && !empty($arr[2])): ?>
+  <?= render($breadcrumb); ?>
+  <h1 class="h1-crumbs"><?= $title ?></h1>
+<?php else: ?>
