@@ -1,0 +1,11 @@
+<div class="stairs-slider">
+    <?php
+    foreach ($content['field_stairs_img']['#items'] as $item):
+      $url = file_create_url($item['uri']);
+      $path_url = parse_url($url);
+      $imgPath = $path_url['path'];
+      $image_uri = image_style_url('stairs_272', $item['uri']);
+      ?>
+      <a href="<?= $imgPath ?>" data-fancybox="front-stairs"><img src="<?= $image_uri ?>" alt="#"></a>
+    <?php endforeach; ?>
+  </div>
