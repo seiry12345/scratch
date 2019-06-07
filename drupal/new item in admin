@@ -1,0 +1,99 @@
+Не забываем включить девел и обновить меню в разработке
+
+
+variable_get('global_phone_number', '');
+
+
+
+// myModule.php
+<?php
+
+function atoll_common_menu()
+{
+  $items = array();
+
+  $items['admin/info_contacts_site'] = array(
+      'title' => 'Информация о сайте',
+      'page callback' => 'atoll_common_page',
+      'access arguments' => ['use domain custom settings'],
+  );
+  
+    return $items;
+}
+
+
+function atoll_common_permission()
+{
+  return [
+      'use domain custom settings' => [
+          'title' => 'use domain custom settings',
+          'description' => 'use domain custom settings'
+      ]
+  ];
+}
+
+
+function  atoll_common_page() {
+
+    $form = drupal_get_form('atoll_common_infosite_form');
+    return $form;
+}
+
+
+//-----------------------------Форма
+
+function atoll_common_infosite_form()
+{
+  $form['siteinfo'] = array(
+      '#type' => 'fieldset',
+      '#title' => t('Extra site info'),
+      '#weight' => 0,
+    );
+
+    $form['siteinfo']['global_phone_number'] = array(
+      '#title' => t('Телефон'),
+      '#type' => 'textfield',
+      '#default_value' => variable_get('global_phone_number', ''),
+    );
+    
+    $form['siteinfo']['global_email'] = array(
+      '#title' => t('Почта'),
+      '#type' => 'textfield',
+      '#default_value' => variable_get('global_email', ''),
+    );
+    
+    $form['siteinfo']['global_vk'] = array(
+      '#title' => t('Вконтакте'),
+      '#type' => 'textfield',
+      '#default_value' => variable_get('global_vk', ''),
+    );
+    
+    $form['siteinfo']['global_instagram'] = array(
+      '#title' => t('Инстаграм'),
+      '#type' => 'textfield',
+      '#default_value' => variable_get('global_instagram', ''),
+    );
+    
+  $form['submit'] = array(
+      '#type' => 'submit',
+      '#value' => 'Сохранить',
+  );
+  return $form;
+}
+
+
+
+
+function atoll_common_infosite_form_submit($form, &$form_state)
+{
+  $values = array(
+    'global_phone_number' => $form_state['values']['global_phone_number'],
+    'global_email' => $form_state['values']['global_email'],
+    'global_vk' => $form_state['values']['global_vk'],
+    'global_instagram' => $form_state['values']['global_instagram'],
+  );
+
+  foreach ($values as $key => $value) {
+    variable_set($key, $value);
+  }
+}
