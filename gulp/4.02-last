@@ -1,0 +1,86 @@
+const gulp = require("gulp"),
+  del = require("del"),
+  sourcemaps = require("gulp-sourcemaps"),
+  plumber = require("gulp-plumber"),
+  less = require("gulp-less"),
+  autoprefixer = require("gulp-autoprefixer"),
+  minifyCss = require("gulp-clean-css"),
+  babel = require("gulp-babel"),
+  webpack = require("webpack-stream"),
+  uglify = require("gulp-uglify"),
+  concat = require("gulp-concat"),
+  imagemin = require("gulp-imagemin"),
+  src_folder = "./src/",
+  src_assets_folder = src_folder + "assets/",
+  dist_folder = "./dist/",
+  dist_assets_folder = dist_folder + "assets/",
+  autoprefixer_options = {
+    browsers: ["last 3 versions", "> 0.5%"]
+  };
+
+gulp.task("clear", () => del([dist_folder]));
+
+gulp.task("less", () => {
+  return gulp
+    .src([src_assets_folder + "less/**/!(_)*.less"], {
+      since: gulp.lastRun("less")
+    })
+    .pipe(sourcemaps.init())
+    .pipe(plumber())
+    .pipe(less())
+    .pipe(autoprefixer(autoprefixer_options))
+    .pipe(minifyCss())
+    .pipe(sourcemaps.write("."))
+    .pipe(gulp.dest(dist_assets_folder + "css"));
+});
+
+gulp.task("js", () => {
+  return gulp
+    .src([src_assets_folder + "js/**/*.js"], { since: gulp.lastRun("js") })
+    .pipe(plumber())
+    .pipe(
+      webpack({
+        mode: "production"
+      })
+    )
+    .pipe(sourcemaps.init())
+    .pipe(
+      babel({
+        presets: ["@babel/env"]
+      })
+    )
+    .pipe(concat("common.js"))
+    .pipe(uglify())
+    .pipe(sourcemaps.write("."))
+    .pipe(gulp.dest(dist_assets_folder + "js"));
+});
+
+gulp.task("images", () => {
+  return gulp
+    .src([src_assets_folder + "images/**/*.+(png|jpg|jpeg|gif|svg|ico)"], {
+      since: gulp.lastRun("images")
+    })
+    .pipe(plumber())
+    .pipe(imagemin())
+    .pipe(gulp.dest(dist_assets_folder + "images"));
+});
+
+gulp.task("build", gulp.series("clear", "less", "js", "images"));
+
+gulp.task("dev", gulp.series("less", "js"));
+
+gulp.task("watch", () => {
+  const watchImages = [
+    src_assets_folder + "images/**/*.+(png|jpg|jpeg|gif|svg|ico)"
+  ];
+
+  const watch = [
+    src_assets_folder + "less/**/*.less",
+    src_assets_folder + "js/**/*.js"
+  ];
+
+  gulp.watch(watch, gulp.series("dev"));
+  gulp.watch(watchImages, gulp.series("images"));
+});
+
+gulp.task("default", gulp.series("build", gulp.parallel("watch")));
