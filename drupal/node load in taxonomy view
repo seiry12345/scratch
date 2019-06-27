@@ -1,0 +1,117 @@
+<?php
+/**
+ * @file
+ * Default theme implementation to display a term.
+ *
+ * Available variables:
+ * - $name: (deprecated) The unsanitized name of the term. Use $term_name
+ *   instead.
+ * - $content: An array of items for the content of the term (fields and
+ *   description). Use render($content) to print them all, or print a subset
+ *   such as render($content['field_example']). Use
+ *   hide($content['field_example']) to temporarily suppress the printing of a
+ *   given element.
+ * - $term_url: Direct URL of the current term.
+ * - $term_name: Name of the current term.
+ * - $classes: String of classes that can be used to style contextually through
+ *   CSS. It can be manipulated through the variable $classes_array from
+ *   preprocess functions. The default values can be one or more of the following:
+ *   - taxonomy-term: The current template type, i.e., "theming hook".
+ *   - vocabulary-[vocabulary-name]: The vocabulary to which the term belongs to.
+ *     For example, if the term is a "Tag" it would result in "vocabulary-tag".
+ *
+ * Other variables:
+ * - $term: Full term object. Contains data that may not be safe.
+ * - $view_mode: View mode, e.g. 'full', 'teaser'...
+ * - $page: Flag for the full page state.
+ * - $classes_array: Array of html class attribute values. It is flattened
+ *   into a string within the variable $classes.
+ * - $zebra: Outputs either "even" or "odd". Useful for zebra striping in
+ *   teaser listings.
+ * - $id: Position of the term. Increments each time it's output.
+ * - $is_front: Flags true when presented in the front page.
+ * - $logged_in: Flags true when the current user is a logged-in member.
+ * - $is_admin: Flags true when the current user is an administrator.
+ *
+ * @see template_preprocess()
+ * @see template_preprocess_taxonomy_term()
+ * @see template_process()
+ *
+ * @ingroup themeable
+ */
+?>
+<?php if ($is_front): ?>
+  <div id="taxonomy-term-<?= $term->tid; ?>" class="<?= $classes; ?> clearfix">
+    <h3><a href="/catalog"><?= $term_name; ?></a></h3>
+    <div class="block_img">
+      <?= render($content['field_catalog_img']); ?>
+    </div>
+    <a href="/catalog" class="product-btn"><span class="button_s">Подробнее</span></a>
+  </div>
+<?php else: ?>
+  <?php
+  $tid = $term->tid;
+  $nids = taxonomy_select_nodes($tid, FALSE);
+  $nodes = node_load_multiple($nids);
+
+  function oc_atoll_taxonomy_catalog_sort($a, $b) {
+    if ($a->created == $b->created) {
+      return 0;
+    }
+    return ($a->created < $b->created) ? -1 : 1;
+  }
+
+  usort($nodes, "oc_atoll_taxonomy_catalog_sort");
+  ?>
+
+  <div id="taxonomy-term-<?= $term->tid; ?>" class="<?= $classes; ?>">
+    <h2 class="category-title"><?= $term_name; ?></h2>
+    <div class="catalog-wrap">
+      <?php
+      foreach ($nodes as $node):
+        $node_url = drupal_lookup_path('alias', "node/" . $node->nid);
+
+        $img_uri = $node->field_product_image['und'][0]['uri'];
+        $img_url = file_create_url($img_uri);
+        $img_path_url = parse_url($img_url);
+        $img_path = $img_path_url['path'];
+        $img_cropped = image_style_url('220_180', $img_uri);
+
+        $doc = $node->field_product_table['und'][0];
+        if (isset($doc)) {
+          $url = file_create_url($doc['uri']);
+          $path_url = parse_url($url);
+          $docPath = $path_url['path'];
+        }
+        ?>
+        <div class="node-<?= $node->nid ?> catalog-item">
+          <div class="wrap">
+            <div class="left">
+              <div class="img"><img src="<?= $img_cropped ?>" alt="<?= $node->title ?>"></div>
+              <?php if (isset($doc)): ?>
+                <div class="file"><a href="<?= $docPath; ?>" class="button_s" download><?= $doc['description']; ?></a></div>
+    <?php endif; ?>
+            </div>
+
+            <div class="right">
+              <div class="catalog-item-right-header">
+                <div class="title-img"><img src="<?= $img_cropped ?>" alt="<?= $node->title ?>"></div>
+                <h3><?= $node->title ?></h3>
+              </div>
+              <div class="catalog-item-price">Цена <?= $node->field_product_price['und'][0]['value'] ?></div>
+              <div class="catalog-wrap-content">
+    <?= $node->body['und'][0]['value'] ?>            
+              </div>
+            </div>
+          </div>
+
+          <div class="catalog-item-table">
+            <?php if (!empty($node->field_product_b_table['und'][0]['value'])): ?>
+              <?= $node->field_product_b_table['und'][0]['value'] ?>
+    <?php endif; ?>
+          </div>
+        </div>
+  <?php endforeach; ?>
+    </div>
+  </div>
+<?php endif; ?>
