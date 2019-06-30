@@ -1,0 +1,59 @@
+<?php
+
+function atoll_catalog_theme($existing, $type, $theme, $path)
+{
+  $atoll_call_me_theme_array = array(
+//    'atoll_catalog' => array(
+//      'arguments' => array('terms' => NULL),
+//      'template' => 'atoll_catalog_page',
+//    ),
+    'atoll_catalog_level2' => array(
+      'arguments' => array('terms' => NULL),
+      'template' => 'atoll_catalog_page_level2',
+    ),
+//      'atoll_call_me_call_me_form' => array(
+//          'render element' => 'form',
+//          'template' => 'call-me-form-template',
+//      )
+  );
+
+  return $atoll_call_me_theme_array;
+}
+
+function atoll_catalog_menu()
+{
+//  $items['catalog'] = array(
+//    'page callback' => 'atoll_catalog_page',
+//    'access callback' => true
+//  );
+  $items['catalog/%'] = array(
+    'page callback' => 'atoll_catalog_page_level2',
+    'page arguments' => [1],
+    'access callback' => true
+  );
+  return $items;
+}
+
+//function atoll_catalog_page()
+//{
+//  $vocabulary = taxonomy_vocabulary_machine_name_load('catalog');
+//  $terms = taxonomy_get_tree($vocabulary->vid);
+//
+//  return theme('atoll_catalog', ['terms' => $terms]);
+//}
+
+function atoll_catalog_page_level2($name)
+{
+  $vocabulary = taxonomy_vocabulary_machine_name_load('catalog');
+  $terms = taxonomy_get_tree($vocabulary->vid);
+  $tid = false;
+  foreach ($terms as $key => $term) {
+    $tid = $term->tid;
+  }
+
+  $nids = taxonomy_select_nodes($tid);
+  $nodes = node_load_multiple($nids);
+  $nodesViews = node_view_multiple($nodes, 'full');
+
+  return theme('atoll_catalog_level2', ['nodes' => $nodesViews]);
+}

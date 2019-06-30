@@ -1,0 +1,5 @@
+name=Atoll_catalog
+description=Каталог
+package=Atoll
+version=0.99
+core=7.x
