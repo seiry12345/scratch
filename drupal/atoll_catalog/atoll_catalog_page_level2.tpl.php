@@ -1,15 +1,15 @@
-<div class="catalog-level-2">
-    <?php
-    $firstNode = current($nodes['nodes']);
-    $categoryTitle = $firstNode['field_products_category'][0]['#title'];
-    ?>
-    <h1><?= render($categoryTitle); ?></h1>
-    <div class="catalog-wrap">
-        <?php
-        foreach ($nodes as $node) {
-            print render($node);
-        }
-        ?>
-    </div>
+<?php
+$firstNode = current($nodes['nodes']);
+$categoryTitle = $firstNode['field_product_category'][0]['#title'];
+drupal_set_title($categoryTitle);
+?>
+<?php if (isset($categoryTitle)): ?>
+<h1><span><?= render($categoryTitle); ?></span></h1>
+<?php endif; ?>
+<div class="catalog-wrap">
+  <?php
+  foreach ($nodes as $node) {
+    print render($node);
+  }
+  ?>
 </div>
-
