@@ -1,0 +1,13 @@
+<?php
+!empty(variable_get('global_address', '')) ? $address = variable_get('global_address', '') : $address = '';
+
+if (!empty(variable_get('global_phone_number', ''))) {
+  $phone1 = variable_get('global_phone_number', '');
+  $tel_phone1 = str_replace(array(' ', '(', ')', '-'), '', $phone1);
+}
+!empty(variable_get('global_email', '')) ? $main_mail = variable_get('global_email', '') : $main_mail = '';
+
+!empty(variable_get('global_vk', '')) ? $vk = variable_get('global_vk', '') : $vk = '';
+
+!empty(variable_get('global_instagram', '')) ? $instagram = variable_get('global_instagram', '') : $instagram = '';
+?>
