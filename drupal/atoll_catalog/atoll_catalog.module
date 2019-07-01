@@ -3,18 +3,14 @@
 function atoll_catalog_theme($existing, $type, $theme, $path)
 {
   $atoll_call_me_theme_array = array(
-//    'atoll_catalog' => array(
-//      'arguments' => array('terms' => NULL),
-//      'template' => 'atoll_catalog_page',
-//    ),
+    'atoll_catalog' => array(
+      'arguments' => array('terms' => NULL),
+      'template' => 'atoll_catalog_page',
+    ),
     'atoll_catalog_level2' => array(
       'arguments' => array('terms' => NULL),
       'template' => 'atoll_catalog_page_level2',
-    ),
-//      'atoll_call_me_call_me_form' => array(
-//          'render element' => 'form',
-//          'template' => 'call-me-form-template',
-//      )
+    )
   );
 
   return $atoll_call_me_theme_array;
@@ -22,10 +18,10 @@ function atoll_catalog_theme($existing, $type, $theme, $path)
 
 function atoll_catalog_menu()
 {
-//  $items['catalog'] = array(
-//    'page callback' => 'atoll_catalog_page',
-//    'access callback' => true
-//  );
+  $items['catalog'] = array(
+    'page callback' => 'atoll_catalog_page',
+    'access callback' => true
+  );
   $items['catalog/%'] = array(
     'page callback' => 'atoll_catalog_page_level2',
     'page arguments' => [1],
@@ -34,26 +30,32 @@ function atoll_catalog_menu()
   return $items;
 }
 
-//function atoll_catalog_page()
-//{
-//  $vocabulary = taxonomy_vocabulary_machine_name_load('catalog');
-//  $terms = taxonomy_get_tree($vocabulary->vid);
-//
-//  return theme('atoll_catalog', ['terms' => $terms]);
-//}
-
-function atoll_catalog_page_level2($name)
+function atoll_catalog_page()
 {
   $vocabulary = taxonomy_vocabulary_machine_name_load('catalog');
   $terms = taxonomy_get_tree($vocabulary->vid);
-  $tid = false;
-  foreach ($terms as $key => $term) {
-    $tid = $term->tid;
-  }
 
+  return theme('atoll_catalog', ['terms' => $terms]);
+}
+
+function atoll_catalog_page_level2($name)
+{
+  $tid = get_path_end_url(1);
+  if (is_numeric($tid) || !empty($tid)) {
+  $full_term = taxonomy_term_load($tid);
   $nids = taxonomy_select_nodes($tid);
   $nodes = node_load_multiple($nids);
+  uasort($nodes, "oc_atoll_taxonomy_catalog_sort");
   $nodesViews = node_view_multiple($nodes, 'full');
-
+} else {
+  drupal_not_found();
+}
+  
   return theme('atoll_catalog_level2', ['nodes' => $nodesViews]);
+}
+
+function get_path_end_url($arg = 1) {
+ $normalPath = drupal_get_normal_path(arg($arg));
+ $normalPathArr = explode('/', $normalPath);
+ return end($normalPathArr);
 }
