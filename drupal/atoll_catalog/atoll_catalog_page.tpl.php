@@ -1,34 +1,30 @@
-<div class="catalog-wrapper">
+<?php 
+  drupal_set_title('Каталог');
+?>
+<div class="inner-catalog clearfix">
   <?php
   foreach ($terms as $term):
     ?>
     <?php
-    $nids = taxonomy_select_nodes($term->tid);
-    $nodes = node_load_multiple($nids);
-    $nodesViews = node_view_multiple($nodes, 'full');
-    $term_url = drupal_get_path_alias('/catalog/' . (int)$term->tid);
+    $tid = $term->tid;
+    $full_term = taxonomy_term_load($tid);
+    $term_alias = drupal_get_path_alias('taxonomy/term/' . $tid);
+
+    $img_uri = $full_term->field_catalog_img['und'][0]['uri'];
+    $img_url = file_create_url($img_uri);
+    $img_path_url = parse_url($img_url);
+    $img_path = $img_path_url['path'];
+    $img_cropped = image_style_url('220_180', $img_uri);
     ?>
-      <div class="catalog-item-bg">
-          <div class="catalog-item">
-              <h3>
-                  <a href="<?= $term_url ?>"><?= $term->name ?></a>
-              </h3>
-              <div class="catalog-teaser-img">
-                  <ul>
-                    <?php foreach ($nodes as $node):
-                      $nid = $node->nid;
-                      $node_path = '/catalog/' . (int)$nid;
-                      $node_alias = drupal_get_path_alias($node_path);
-                      ?>
-                        <li>
-                            <a href="<?= $node_alias ?>">
-                              <?= $node->title ?>
-                            </a>
-                        </li>
-                    <?php endforeach; ?>
-                  </ul>
-              </div>
-          </div>
+
+    <div id="<?= $term_alias; ?>" class="<?= $classes; ?> views-row clearfix">
+      <h3>
+        <a href="/catalog/<?= $term_alias; ?>" > <?= $term->name; ?> </a>
+      </h3>
+      <div class="block_img">
+        <img src="<?= $img_cropped ?>" alt="<?= $term->name; ?>">
       </div>
+      <a href="/catalog/<?= $term_alias; ?>" class="product-btn"><span class="button_s">Подробнее</span></a>
+    </div>
   <?php endforeach; ?>
 </div>
