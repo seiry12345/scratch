@@ -100,7 +100,7 @@ ymaps.ready(function () {
   });
 
 
-// polygons
+// polylines
 
 var map = document.getElementById('map');
 if (map !== null) {
