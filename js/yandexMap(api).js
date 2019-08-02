@@ -98,3 +98,71 @@ ymaps.ready(function () {
             }
     );
   });
+
+
+// polygons
+
+var map = document.getElementById('map');
+if (map !== null) {
+  ymaps.ready(init);
+}
+
+function init() {
+  map = new ymaps.Map('map', {
+    center: [54.98717303815178, 73.36195050781244],
+    zoom: 11,
+    controls: ['smallMapDefaultSet'],
+  });
+  var objectManager = new ymaps.ObjectManager({
+    geoObjectOpenBalloonOnClick: false
+  });
+
+
+  var delivery500 = new ymaps.Polygon([
+    [
+      [54.97038865840138, 73.31834851806636],
+      [55.00829159188506, 73.28332959716789],
+      [55.035512122136126, 73.34924756591789],
+      [55.01184314875526, 73.43919812744136],
+      [54.964858143008755, 73.42065869873043],
+      [54.97038865840138, 73.31834851806636]
+    ]
+  ], {
+    hintContent: "Доставка 500 рублей"
+  }, {
+    fillColor: 'rgba(210, 52, 52, 0.5)',
+    strokeWidth: 2,
+  });
+
+  var delivery1000 = new ymaps.Polygon([
+    [
+      [54.94944767389453, 73.28195630615228],
+      [54.995266513711066, 73.20573865478508],
+      [55.07886878893439, 73.31697522705073],
+      [55.0232849053648, 73.52159558837883],
+      [54.92691400092893, 73.44331800048823],
+      [54.94944767389453, 73.28195630615228]
+    ],
+    [
+      [54.97038865840138, 73.31834851806636],
+      [55.00829159188506, 73.28332959716789],
+      [55.035512122136126, 73.34924756591789],
+      [55.01184314875526, 73.43919812744136],
+      [54.964858143008755, 73.42065869873043],
+      [54.97038865840138, 73.31834851806636]
+    ]
+  ], {
+    hintContent: "Доставка 1000 рублей",
+    fillColor: 'rgb(210, 52, 52)',
+    strokeWidth: 2,
+  });
+
+  map.geoObjects.add(delivery500);
+  map.geoObjects.add(delivery1000);
+
+
+  map.behaviors.disable('scrollZoom');
+  map.setBounds(map.geoObjects.getBounds());
+  map.geoObjects.add(objectManager);
+
+}
