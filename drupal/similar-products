@@ -1,0 +1,19 @@
+function similarProduct($tid, $limit = 3) {
+       $query = new EntityFieldQuery();
+ 
+       $query->entityCondition('entity_type', 'node')
+             ->entityCondition('bundle', 'product')
+             ->propertyCondition('status', 1)
+             ->fieldCondition('field_product_category', 'tid', $tid)
+             ->range(0, $limit);
+             ->propertyOrderBy('created', 'DESC');
+       
+       $results = $query->execute();
+ 
+       if (!empty($results)) {
+           $content = node_view_multiple(node_load_multiple(array_keys($results['node'])), 'teaser');
+           return $content;
+       }
+       
+       return FALSE;
+    }
