@@ -1,0 +1,21 @@
+const currentID = 1;
+  const btn = document.querySelector('#btn');
+  const li = document.querySelectorAll('.list li');
+  let liText;
+  let prevText;
+  let nextText;
+
+  function compareChilds(currentID) {
+    for (let i = 0; i < li.length; i++) {
+      liText = li[i].innerText;
+      li[i - 1] ? (prevText = li[i - 1].innerText) : '';
+      li[i + 1] ? (nextText = li[i + 1].innerText) : '';
+
+      if (
+        liText == prevText ||
+        (liText == nextText && li[i].dataset.id == currentID)
+      ) {
+        console.log(liText);
+      }
+    }
+  }
