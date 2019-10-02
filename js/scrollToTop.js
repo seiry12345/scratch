@@ -1,54 +1,45 @@
 <div class="scrollToTop">
-	    <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" x="0px" y="0px" width="512px" height="512px" viewBox="0 0 337.085 337.086" style="enable-background:new 0 0 337.085 337.086;" xml:space="preserve">
-	    <path d="M168.54,0C75.619,0,0.012,75.609,0.012,168.543c0,92.93,75.606,168.543,168.528,168.543   c92.933,0,168.534-75.613,168.534-168.543C337.074,75.609,261.473,0,168.54,0z M271.405,224.327   c-2.407,2.402-5.561,3.615-8.713,3.615c-3.158,0-6.311-1.213-8.719-3.615L168.54,138.9l-85.424,85.427   c-4.816,4.815-12.631,4.815-17.447,0c-4.819-4.815-4.819-12.622,0-17.438l94.152-94.141c4.822-4.815,12.613-4.815,17.426,0   l94.152,94.141C276.221,211.705,276.221,219.512,271.405,224.327z" fill="#FFFFFF"/>
-	    </svg>
-	    <span>Наверх</span>
+      <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+           width="40px" height="40px" viewBox="0 0 444.819 444.819"
+           xml:space="preserve">
+      <g>
+      <path d="M434.252,208.708L248.387,22.843c-7.042-7.043-15.693-10.564-25.977-10.564c-10.467,0-19.036,3.521-25.697,10.564
+            L10.848,208.708C3.615,215.94,0,224.604,0,234.692c0,9.897,3.619,18.459,10.848,25.693l21.411,21.409
+            c6.854,7.231,15.42,10.855,25.697,10.855c10.278,0,18.842-3.624,25.697-10.855l83.939-83.651v200.998
+            c0,9.89,3.567,17.936,10.706,24.126c7.139,6.184,15.752,9.273,25.837,9.273h36.545c10.089,0,18.698-3.09,25.837-9.273
+            c7.139-6.188,10.712-14.236,10.712-24.126V198.144l83.938,83.651c6.848,7.231,15.413,10.855,25.7,10.855
+            c10.082,0,18.747-3.624,25.975-10.855l21.409-21.409c7.043-7.426,10.567-15.988,10.567-25.693
+            C444.819,224.795,441.295,216.134,434.252,208.708z"/>
+      </g>
+      </svg>
 </div>
 
 
 .scrollToTop {
-    display: none;
-    opacity: 0.6;
-    position: fixed;
-    bottom: 25px;
-    right: 25px;
-    text-align: center;
-    font-weight: 700;
-    color: #fff;
-    font-size: 16px;
-    color: #fff;
-    cursor: pointer;
-    transition: all .25s ease;
-    &:hover {
-	opacity: 1;
-    }
-    svg {
-	width: 50px;
-	height: 50px;
-	fill: #fff;
-	background-color: @base-color;
-	border-radius: 50%;
-	border: 1px solid @base-color;
-    }
-    span {
-	display: none;
-    }
+  overflow: hidden;
+  display: none;
+  opacity: 0.6;
+  position: fixed;
+  bottom: 25px;
+  right: 25px;
+  text-align: center;
+  font-weight: 700;
+  color: #fff;
+  font-size: 16px;
+  color: #fff;
+  cursor: pointer;
+  transition: all 0.3s ease;
 }
 
-@media only screen and (max-width: 480px) {
-    .scrollToTop {
-	width: 100%;
-	right: 0;
-	bottom: 0;
-	padding: 10px;
-	svg {
-	    // перенести svg вправо
-	    display: none;
-	}
-	span {
-	    display: block;
-	}
-    }
+.scrollToTop:hover {
+  opacity: 1;
+}
+
+.scrollToTop svg {
+  width: 40px;
+  height: 40px;
+  fill: #ff5a19;
+  border-radius: 50%;
 }
 
 
