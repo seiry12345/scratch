@@ -1,4 +1,4 @@
-$('.main-slider .view-content').slick({
+$('.slider').slick({
       slidesToShow: 1,
       slidesToScroll: 1,
       arrows: false,
@@ -7,8 +7,11 @@ $('.main-slider .view-content').slick({
       adaptiveHeight: true,
       speed: 700
     });
-    $('.main-slider .view-content').on('setPosition', function (event, slick) {
-      slick.$slides.css('height', slick.$slideTrack.height() + 'px');
+   $('.slider').on('setPosition', function () {
+      $(this).find('.slick-slide').height('auto');
+      const slickTrack = $(this).find('.slick-track');
+      const slickTrackHeight = $(slickTrack).height();
+      $(this).find('.slick-slide').css('height', slickTrackHeight + 'px');
     });
     
     
