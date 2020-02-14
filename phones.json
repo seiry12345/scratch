@@ -1,0 +1,52 @@
+[
+  {
+    "id": 1,
+    "title": "Мобильный телефон NOKIA106, серый",
+    "src": "~/assets/images/product-list-item/phone1.png",
+    "feedback": 3,
+    "stock": 20,
+    "url": "#",
+    "oldPrice": "45 000",
+    "currentPrice": "39 000"
+  },
+  {
+    "id": 2,
+    "title": "Мобильный телефон NOKIA 130 2017 Dual sim, красный",
+    "src": "~/assets/images/product-list-item/phone2.png",
+    "feedback": 3,
+    "stock": 20,
+    "url": "#",
+    "oldPrice": "45 000",
+    "currentPrice": "39 000"
+  },
+  {
+    "id": 3,
+    "title": "Мобильный телефон ARK U243 красный",
+    "src": "~/assets/images/product-list-item/phone3.png",
+    "feedback": 3,
+    "stock": 20,
+    "url": "#",
+    "oldPrice": "45 000",
+    "currentPrice": "39 000"
+  },
+  {
+    "id": 4,
+    "title": "Мобильный телефон Nokia",
+    "src": "~/assets/images/product-list-item/phone2.png",
+    "feedback": 3,
+    "stock": 20,
+    "url": "#",
+    "oldPrice": "45 000",
+    "currentPrice": "39 000"
+  },
+  {
+    "id": 5,
+    "title": "Мобильный телефон ARK",
+    "src": "~/assets/images/product-list-item/phone3.png",
+    "feedback": 3,
+    "stock": 20,
+    "url": "#",
+    "oldPrice": "45 000",
+    "currentPrice": "39 000"
+  }
+]
