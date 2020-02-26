@@ -1,1 +1,27 @@
+// binding phones with users
+// in phones migration
 
+// user_id Model User
+$table->unsignedBigInteger('user_id')->index();
+$table->foreign('user_id)->references('id')->on('users);
+
+// in User model
+public function phone()
+{
+  return $this->hasOne(Phone::class);
+}
+
+// in Phone model (model that have reference for id, have to belongsTo)
+public function user()
+{
+  return $this->belognsTo(User::class);
+}
+
+// when grabbing data
+$user->phone;
+$phone->$user;
+
+// when creating
+$user->phone()->create([
+  'phone' => '222-333-4567',
+]);
