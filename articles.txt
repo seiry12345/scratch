@@ -7,6 +7,8 @@ https://habr.com/post/431836/
 https://habr.com/post/431040/
 https://habr.com/post/430326/
 
+https://laraveldaily.com/calling-eloquent-from-blade-6-tips-for-performance/
+
 https://habr.com/post/431042/
 
 https://git-scm.com/book/ru/v1
