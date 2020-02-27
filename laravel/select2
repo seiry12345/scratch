@@ -1,5 +1,4 @@
-$(function () {
-    function institutionsSelect() {
+function institutionsSelect() {
         const container = $('.js-institutions-select');
 
         container.select2({
@@ -32,25 +31,20 @@ $(function () {
             },
         });
 
-        container.on('change', function(e) {
-            const institutionID = e.target.value();
-
-            $.get('/json-regencies?country=' + country,function(data) {
-                console.log(data);
-
-                $.each(data, function(index, regenciesObj){
-                    $('#regencies').append('<option value="'+ regenciesObj.id +'">'+ regenciesObj.name +'</option>');
+        container.on('change', function (e) {
+            $.get('/get-groups', function (data) {
+                $.each(data, function (index, item) {
+                    $('#groups-select').append('<option value="' + item.id + '">' + item.name + '</option>');
                 })
             });
         })
     }
 
     institutionsSelect();
-});
 
 
 
-public function getTerm(Request $request)
+public function getInstitutions(Request $request)
     {
         $data = [];
 
@@ -65,8 +59,8 @@ public function getTerm(Request $request)
 
     public function getGroups(Request $request)
     {
-        $request_id = $request->insitution;
-        $data = Group::where('institution_id', '=', $request_id)->get();
+        $request_id = $request->input('institutions')->first();
+        $data = Group::where('institution_id', '=', 1)->get();
 
         return response()->json($data);
     }
