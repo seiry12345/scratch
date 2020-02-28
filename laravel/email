@@ -1,1 +1,15 @@
+mailtrap.io
+mailgun.com
 
+php artisan make:mail WelcomeMail -m emails.welcome
+
+Route::get('/email', function() {
+Mail::to('email@email.com')->send(new WelcomeMail());
+
+return new WelcomeMail();
+}
+
+// in CustomersController
+public function() {
+  Mail::to($customer->email())->send(new WelcomeMail());
+}
