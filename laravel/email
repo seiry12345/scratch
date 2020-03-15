@@ -13,3 +13,37 @@ return new WelcomeMail();
 public function() {
   Mail::to($customer->email())->send(new WelcomeMail());
 }
+
+// in welcome email
+class WelcomeMail extends Mailable
+{
+    use Queueable, SerializesModels;
+
+    public $data;
+
+    public function __construct($data)
+    {
+        $this->data = $data;
+    }
+
+    public function build()
+    {
+        return $this->markdown('emails.question')
+            ->subject('Новый вопрос от пользователя с сайта')
+            ->with(['data' => $this->data]);
+    }
+}
+
+// in welcome view
+<h2>Спасибо за регистрацию</h1>
+
+<h3>Данные профиля</h3>
+<ul class="list-group">
+    <li class="list-group-item">Ваш логин: {{ $data['email'] }}</li>
+    <li class="list-group-item">Ваш пароль: {{ $data['password'] }}</li>
+</ul>
+
+<p>
+    <a href="{{ url('/') }}">Вернуться на сайт</a>
+</p>
+
