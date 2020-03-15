@@ -1,0 +1,63 @@
+<template>
+  <form class="product-filter">
+
+    <div v-click-outside="hide" class="product-filter-content">
+      <button
+        type="button"
+        :class="['button', buttonClass]"
+        @click="buttonOnClick"
+      >
+        {{buttonText}}
+      </button>
+
+      <div v-if="isActive" class="product-filter-list">
+        <div
+          v-for="item in sortItems"
+          :key="item.by"
+          :class="item.class"
+          @click="buttonOnSelect(item)"
+        >
+          {{ item.text }}
+        </div>
+      </div>
+    </div>
+  </form>
+</template>
+
+<script>
+	import ClickOutside from 'vue-click-outside'
+
+	export default {
+		name: "SortSelect",
+		directives: {
+			ClickOutside
+		},
+		props: {
+			sortItems: Array,
+		},
+		data() {
+			return {
+				isActive: false,
+				buttonText: 'По цене',
+        buttonClass: 'product-filter-button',
+				selected: null,
+			}
+		},
+		methods: {
+			buttonOnClick() {
+				this.isActive = !this.isActive;
+			},
+			buttonOnSelect(item) {
+				this.isActive = false;
+				this.buttonText = item.text;
+				this.buttonClass = item.class;
+				this.selected = item.filterBy;
+
+				this.$emit('sort-on-select', this.selected);
+			},
+			hide() {
+				this.isActive = false;
+			}
+		}
+	}
+</script>
