@@ -4,6 +4,7 @@ transition: {
 }
 
 style
+  // where fade - name of transition['name']
   .fade-enter-active,
   .fade-leave-active
   {
