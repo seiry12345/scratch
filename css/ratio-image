@@ -1,0 +1,9 @@
+img {
+  --ratio: 664 / 1000;
+  --container-width: 30em;
+  display: block;
+  height: calc(100vw * var(--ratio));
+  max-height: calc(var(--container-width) * var(--ratio));
+  width: 100%;
+  max-width: var(--container-width);
+}
