@@ -14,4 +14,4 @@ DG.then(function () {
 
 
 
-http://api.2gis.ru/doc/maps/ru/quickstart/
+// http://api.2gis.ru/doc/maps/ru/quickstart/

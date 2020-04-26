@@ -1,34 +1,34 @@
 function formLabelInteractive(selector) {
-        const inputs = [...document.querySelectorAll(selector)];
+    const inputs = [...document.querySelectorAll(selector)];
 
-        function toggleLableClass(e) {
-            const target = e.target;
-            const label = target.previousElementSibling;
+    function toggleLableClass(e) {
+        const target = e.target;
+        const label = target.previousElementSibling;
 
-            if (e.type === "focus") {
-                if (target.value !== "") {
-                    label.classList.add("active");
-                } else {
-                    label.classList.toggle("active");
-                }
-            } else if (e.type === "blur") {
-                if (target.value === "") {
-                    label.classList.remove("active");
-                } else {
-                    label.classList.add("active");
-                }
+        if (e.type === "focus") {
+            if (target.value !== "") {
+                label.classList.add("active");
+            } else {
+                label.classList.toggle("active");
             }
-        }
-
-        if (inputs) {
-            ['blur', 'focus'].forEach(evt =>
-                inputs.forEach(input => {
-                    input.addEventListener(evt, function (e) {
-                        toggleLableClass(e);
-                    });
-                })
-            );
+        } else if (e.type === "blur") {
+            if (target.value === "") {
+                label.classList.remove("active");
+            } else {
+                label.classList.add("active");
+            }
         }
     }
 
-    formLabelInteractive('.js-animate-form input');
+    if (inputs) {
+        ['blur', 'focus'].forEach(evt =>
+            inputs.forEach(input => {
+                input.addEventListener(evt, function (e) {
+                    toggleLableClass(e);
+                });
+            })
+        );
+    }
+}
+
+formLabelInteractive('.js-animate-form input');

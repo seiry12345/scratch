@@ -1,38 +1,46 @@
-function equalHeight(num, selector) {
-    var discountItems = num;
+{/*
+   <div class="wrap">
+  <div class="item">12312313</div>
+  <div class="item">
+    123123131231 231312312313 123123131231231 31231231312312313 31231231312312313
+      </div>
+  <div class="item">12312313</div>
 
-    var items = $(selector);
-    for (var i = 0; i < items.length; i = i + discountItems) {
-      var row = items.slice(i, i + discountItems);
-      var max = 0;
-      $(row).each(function () {
-        if ($(this).height() > max) {
-          max = $(this).height();
-        }
-      });
-      $(row).height(max);
+  <div class="item">12312313</div>
+  <div class="item">
+    123123131231 231312312313 123123131231231 31231231312312313
+      </div>
+</div>
+*/}
+
+document.addEventListener('DOMContentLoaded', function () {
+  equalHeight(3, '.item');
+});
+
+function equalHeight(numberItemsInRow, selector) {
+  var items = [...document.querySelectorAll(selector)];
+
+  if (items) {
+    for (let i = 0; i < items.length; i = i + numberItemsInRow) {
+      const row = items.slice(i, i + numberItemsInRow);
+      let max = 0;
+
+      findMax(row);
+      setHeight(row);
+
+      function findMax(row) {
+        row.forEach(rowItem => {
+          if (rowItem.offsetHeight > max) {
+            max = rowItem.offsetHeight;
+          }
+        });
+      }
+
+      function setHeight(row) {
+        row.forEach(rowItem => {
+          rowItem.style.height = max + 'px';
+        });
+      }
     }
   }
-
-if($(".front-news").length) {
-        var catalogItems = 5;
-        if ($(window).width() > 900) {
-            catalogItems = 5;
-        } else if ($(window).width() > 600) {
-            catalogItems = 2;
-        } else {
-            catalogItems = 1;
-        }
-
-        var items = $('.front-news .news-preview');
-        for (var i = 0; i < items.length; i = i + catalogItems) {
-            var row = items.slice(i, i + catalogItems);
-            var max = 0;
-            $(row).each(function () {
-                if ($(this).height() > max) {
-                    max = $(this).height();
-                }
-            });
-            $(row).height(max);
-        }
 }
