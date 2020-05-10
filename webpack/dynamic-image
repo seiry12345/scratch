@@ -1,0 +1,15 @@
+<img :src="require(`~/assets/images/backgrounds/${getImageName}`)" alt="#">
+
+:style="`background: url(${getBgPath}) no-repeat center / cover`"
+
+
+bg: [
+          'mountain.jpg',
+          'sky.jpg',
+          'ship.jpg'
+        ],
+
+getBgPath () {
+        const index = Math.floor(Math.random() * this.bg.length)
+        return require('~/assets/images/backgrounds/' + this.bg[index])
+      }
