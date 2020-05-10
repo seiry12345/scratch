@@ -1,4 +1,4 @@
-<img :src="require(`~/assets/images/backgrounds/${getImageName}`)" alt="#">
+<img :src="require(`~/assets/images/backgrounds/${getBgPath}`)" alt="#">
 
 :style="`background: url(${getBgPath}) no-repeat center / cover`"
 
