@@ -1,0 +1,8 @@
+var parentPos = document.getElementById('parent-id').getBoundingClientRect(),
+    childPos = document.getElementById('child-id').getBoundingClientRect(),
+    relativePos = {};
+
+relativePos.top = childPos.top - parentPos.top,
+relativePos.right = childPos.right - parentPos.right,
+relativePos.bottom = childPos.bottom - parentPos.bottom,
+relativePos.left = childPos.left - parentPos.left;
