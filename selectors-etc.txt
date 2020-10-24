@@ -1,3 +1,5 @@
+add selection for the next occuren
+
 Специфичность
 style 				1,0,0,0
 #id   				0,1,0,0
