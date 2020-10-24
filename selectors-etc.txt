@@ -1,4 +1,8 @@
 add selection for the next occuren
+whatFont
+pageRule
+page Ruler Redux
+PixelPerfect
 
 Специфичность
 style 				1,0,0,0
