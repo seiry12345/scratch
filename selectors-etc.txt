@@ -3,6 +3,8 @@ whatFont
 pageRule
 page Ruler Redux
 PixelPerfect
+http://jsfiddle.net/b7L6c5n9/
+http://jsfiddle.net/prx2tc1e/
 
 Специфичность
 style 				1,0,0,0
