@@ -1,0 +1,21 @@
+.wrap {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: stretch;
+    justify-content: center;
+    max-width: 89.999em;
+    padding: 0 1em;
+    margin: 0 auto;
+}
+
+.card {
+    flex: 1 0 20em;
+    max-width: 30em;
+    margin: 0 1em 2em;
+}
+
+@media all and (max-width: 30em) {
+  .wrap {
+    display: block;
+  }
+}
