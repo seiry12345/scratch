@@ -1,0 +1,17 @@
+.modal__body {
+  position: absolute;
+  left: 50%;
+  top: 3rem;
+  transform: translateX(-50%);
+  width: 500px;
+  min-height: 200px;
+  max-height: 500px;
+  overflow-y: auto;
+}
+
+@media (min-height: 700px) {
+  .modal__body {
+    top: 50%;
+    transform: translate(-50%, -50%);
+  }
+}
