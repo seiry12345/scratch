@@ -1,0 +1,7 @@
+@for $i from 1 through 10 {
+        .nav__item:nth-child(#{$i}n) {
+            .nav__link {
+                animation-delay: #{$i * 1}s;
+            }
+        }
+    }
